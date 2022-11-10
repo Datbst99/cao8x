@@ -1,0 +1,18 @@
+.btn-default {
+  color: #fff;
+  background: linear-gradient(180deg, #faf1d5 0%, #f9d3ac 35%, #f9d3ac 100%);
+  border-color: #fad3aa;
+  box-shadow: none;
+}
+
+.btn-xs {
+  padding: 0.2rem 0.4rem;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 0.2rem;
+}
+
+.text-main-color {
+  color: #888;
+}
+

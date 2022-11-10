@@ -1,0 +1,20 @@
+$main-color: #fad3aa;
+$text-main-color: #888;
+
+.btn-default {
+    color: #fff;
+    background: linear-gradient( 180deg , rgba(250,241,213,1) 0%, rgba(249,211,172,1) 35%, rgba(249,211,172,1) 100%);
+    border-color:$main-color;
+    box-shadow: none;
+}
+
+.btn-xs {
+    padding: 0.2rem 0.4rem;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 0.2rem;
+}
+
+.text-main-color {
+    color: $text-main-color;
+}
