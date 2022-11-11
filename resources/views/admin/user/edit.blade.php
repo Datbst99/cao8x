@@ -23,8 +23,16 @@
                     <input type="email" name="email" class="form-control" placeholder="Nhập email" value="{{old('email') ?? $user->email}}">
                 </div>
                 <div class="form-group">
-                    <label for="">Mật khẩu mới</label>
+                    <label for="">Mật khẩu mới (<span class="text-secondary text-sm">Có thể bỏ trống</span>) </label>
                     <input type="text" name="password" class="form-control" placeholder="Nhập mật khẩu mới" value="{{old('password')}}">
+                </div>
+                <div class="form-group">
+                    <label for="">Phân quyền</label>
+                    {!! Form::select('role', $roles, $user->roles()->first()->name, ['class' => 'form-control']) !!}
+                </div>
+                <div class="form-group">
+                    <label for="">Trạng thái</label>
+                    {!! Form::select('status', [0 => 'Tạm dừng', 1 => 'Hoạt động'], $user->status, ['class' => 'form-control']) !!}
                 </div>
                 <div>
                     <a href="{{route('admin.user')}}" class="btn btn-secondary">Hủy</a>

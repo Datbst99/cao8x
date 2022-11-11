@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\Admin\DashboardController;
 use \App\Http\Controllers\Admin\CategoryController;
 use \App\Http\Controllers\Admin\UserController;
+use \App\Http\Controllers\Admin\PageController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,6 +39,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function (){
         Route::post('/store', [CategoryController::class, 'store'])->name('admin.category.store');
         Route::match(['post', 'get'], '/{id}/edit', [CategoryController::class, 'edit'])->name('admin.category.edit');
         Route::get('/{id}/delete', [CategoryController::class, 'delete'])->name('admin.category.delete');
+
+        Route::get('/{id}/config-page', [PageController::class, 'configPage'])->name('admin.category.configPage');
     });
+
 });
 
