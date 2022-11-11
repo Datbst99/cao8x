@@ -26,9 +26,11 @@ var option_editor = {
         'indent',
         'outdent',
         'alignment',
+        'fontBackgroundColor',
+        'fontColor',
         '|',
         'CKFinder',
-        'imageUpload',
+        // 'imageUpload',
         'blockQuote',
         'insertTable',
         'htmlEmbed',
@@ -64,8 +66,8 @@ var option_editor = {
     },
     autosave: {
         save( editor ) {
-
-            return saveData( editor.getData() );
+            window.editor = editor.getData()
+            // return saveData( editor.getData() );
         }
     },
     licenseKey: '',
@@ -83,13 +85,8 @@ var option_editor = {
             // { model: 'heading6', view: 'h6', title: 'Heading 6', class: 'ck-heading_heading6' }
         ]
     },
-    wordCount: {
-        onUpdate: stats => {
-            // Prints the current content statistics.
-            $('input[name="count_word"]').val(stats.words);
-        }
-    },
-    placeholder: 'Nội dung',
+
+    placeholder: 'Tạo nội dung website',
 };
 const watchdog = new CKSource.EditorWatchdog();
 window.watchdog = watchdog;
@@ -101,7 +98,6 @@ watchdog.setCreator( ( element, config ) => {
         .create( element, config )
         .then( editor => {
             editors[element.id] =  editor;
-            displayStatus( editor );
         })
 } );
 
@@ -112,6 +108,28 @@ watchdog.setDestructor( editor => {
 watchdog.on( 'error', handleError );
 
 function handleError( error ) {
-    console.log( error );
+    // console.log( error );
 }
 watchdog.create( document.querySelector('#textareaContent'), option_editor).catch( handleError );
+
+
+window.pushData = function (id) {
+    let content = editor
+    let seo_title = $("input[name='seo_title']").val()
+    let seo_keywords = $("input[name='seo_keywords']").val()
+    let seo_description = $("input[name='seo_description']").val()
+    let _token   = $('meta[name="csrf-token"]').attr('content');
+    $.ajax({
+        url: `/admin/category/${id}/config/change`,
+        method: 'post',
+        data : {
+            content,
+            seo_title,
+            seo_keywords,
+            seo_description,
+            _token: _token
+        }
+    }).done(function (res) {
+        location.replace(res.link)
+    })
+}

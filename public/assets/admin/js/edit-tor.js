@@ -100,7 +100,8 @@ var option_editor = {
     'fontBackgroundColor', 'fontColor', '|', 'link']
   },
   language: 'vi',
-  blockToolbar: ['heading', '|', 'numberedList', 'bulletedList', '|', 'indent', 'outdent', 'alignment', '|', 'CKFinder', 'imageUpload', 'blockQuote', 'insertTable', 'htmlEmbed', 'codeBlock', '|', 'horizontalLine', 'pageBreak' // 'mediaEmbed',
+  blockToolbar: ['heading', '|', 'numberedList', 'bulletedList', '|', 'indent', 'outdent', 'alignment', 'fontBackgroundColor', 'fontColor', '|', 'CKFinder', // 'imageUpload',
+  'blockQuote', 'insertTable', 'htmlEmbed', 'codeBlock', '|', 'horizontalLine', 'pageBreak' // 'mediaEmbed',
   // '|',
   // 'specialCharacters',
   // '|',
@@ -115,7 +116,7 @@ var option_editor = {
   },
   autosave: {
     save: function save(editor) {
-      return saveData(editor.getData());
+      window.editor = editor.getData(); // return saveData( editor.getData() );
     }
   },
   licenseKey: '',
@@ -147,13 +148,7 @@ var option_editor = {
     // { model: 'heading6', view: 'h6', title: 'Heading 6', class: 'ck-heading_heading6' }
     ]
   },
-  wordCount: {
-    onUpdate: function onUpdate(stats) {
-      // Prints the current content statistics.
-      $('input[name="count_word"]').val(stats.words);
-    }
-  },
-  placeholder: 'Nội dung'
+  placeholder: 'Tạo nội dung website'
 };
 var watchdog = new CKSource.EditorWatchdog();
 window.watchdog = watchdog;
@@ -161,7 +156,6 @@ var editors = {};
 watchdog.setCreator(function (element, config) {
   return CKSource.Editor.create(element, config).then(function (editor) {
     editors[element.id] = editor;
-    displayStatus(editor);
   });
 });
 watchdog.setDestructor(function (editor) {
@@ -169,11 +163,33 @@ watchdog.setDestructor(function (editor) {
 });
 watchdog.on('error', handleError);
 
-function handleError(error) {
-  console.log(error);
+function handleError(error) {// console.log( error );
 }
 
 watchdog.create(document.querySelector('#textareaContent'), option_editor)["catch"](handleError);
+
+window.pushData = function (id) {
+  var content = editor;
+  var seo_title = $("input[name='seo_title']").val();
+  var seo_keywords = $("input[name='seo_keywords']").val();
+  var seo_description = $("input[name='seo_description']").val();
+
+  var _token = $('meta[name="csrf-token"]').attr('content');
+
+  $.ajax({
+    url: "/admin/category/".concat(id, "/config/change"),
+    method: 'post',
+    data: {
+      content: content,
+      seo_title: seo_title,
+      seo_keywords: seo_keywords,
+      seo_description: seo_description,
+      _token: _token
+    }
+  }).done(function (res) {
+    location.replace(res.link);
+  });
+};
 
 /***/ }),
 
@@ -184,7 +200,7 @@ watchdog.create(document.querySelector('#textareaContent'), option_editor)["catc
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\app\xampp\htdocs\clone\cao8x\resources\assets\admin\js\edit-tor.js */"./resources/assets/admin/js/edit-tor.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\cao8x\resources\assets\admin\js\edit-tor.js */"./resources/assets/admin/js/edit-tor.js");
 
 
 /***/ })

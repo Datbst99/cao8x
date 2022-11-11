@@ -41,6 +41,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function (){
         Route::get('/{id}/delete', [CategoryController::class, 'delete'])->name('admin.category.delete');
 
         Route::get('/{id}/config-page', [PageController::class, 'configPage'])->name('admin.category.configPage');
+        Route::post('/{id}/config/change', [PageController::class, 'configChange'])->name('admin.category.configChange');
     });
 
 });

@@ -9,43 +9,38 @@
     <div class="card">
         <div class="card-body">
             {!! Form::open() !!}
+
+            <div class="form-group">
+                <label for="">Nội dung hiển thị cho danh mục</label>
+                {{--                <textarea name="" id="textareaContent"></textarea>--}}
+                <div class="border" style="min-height: 100px">
+                    <div id="textareaContent">
+                        {!! $page->content ?? '' !!}
+                    </div>
+                </div>
+            </div>
             <div class="form-group">
                 <label for="">Seo title</label>
-                {!! Form::text('seo_title', null, ['class' => 'form-control']) !!}
+                {!! Form::text('seo_title', $page->seo_title ?? '', ['class' => 'form-control', 'placeholder' => 'Seo title']) !!}
             </div>
             <div class="form-group">
                 <label for="">Seo keywords</label>
-                {!! Form::text('seo_keywords', null, ['class' => 'form-control']) !!}
+                {!! Form::text('seo_keywords', $page->seo_keywords ?? '', ['class' => 'form-control', 'placeholder' => 'Seo keywords']) !!}
             </div>
             <div class="form-group">
                 <label for="">Seo description</label>
-                {!! Form::text('seo_description', null, ['class' => 'form-control']) !!}
+                {!! Form::text('seo_description', $page->seo_description ?? '', ['class' => 'form-control', 'placeholder' => 'Seo description']) !!}
             </div>
-            <div class="form-group">
-                <label for="">Nội dung hiển thị cho danh mục</label>
-{{--                <textarea name="" id="editor"></textarea>--}}
-                <div id="textareaContent">
-                    <p>The editor content goes here.</p>
-                </div>
+            <div>
+                <button class="btn btn-primary" id="save" type="button" onclick="pushData({{$id}})">Xác nhận</button>
+                <button class="btn btn-primary" type="button">Xem trước</button>
             </div>
             {!! Form::close() !!}
         </div>
     </div>
 @endsection
 @section('before-script')
-{{--    <script src="https://cdn.ckeditor.com/4.4.5.1/full-all/ckeditor.js"></script>--}}
 {!! Html::script('assets/plugins/ckeditor5.1/build/ckeditor.js') !!}
+{!! Html::script('assets/plugins/ckfinder/ckfinder.js') !!}
 <script src="{!! mix('assets/admin/js/edit-tor.js') !!}"></script>
-@endsection
-
-@section('after-script')
-{{--    <script>--}}
-{{--        Editor.create( document.querySelector( '#editor' ) )--}}
-{{--            .then( editor => {--}}
-{{--                console.log( editor );--}}
-{{--            } )--}}
-{{--            .catch( error => {--}}
-{{--                console.error( error );--}}
-{{--            } );--}}
-{{--    </script>--}}
 @endsection

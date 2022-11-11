@@ -17,7 +17,7 @@ class CreatePageOfCategoriesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('category_id')->nullable();
             $table->string('path_background')->nullable();
-            $table->text('content');
+            $table->text('content')->nullable();
 
             $table->string('seo_title')->nullable();
             $table->string('seo_keywords')->nullable();
