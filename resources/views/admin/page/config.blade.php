@@ -23,19 +23,29 @@
             </div>
             <div class="form-group">
                 <label for="">Nội dung hiển thị cho danh mục</label>
-                <textarea name="" id="summary-ckeditor"></textarea>
+{{--                <textarea name="" id="editor"></textarea>--}}
+                <div id="textareaContent">
+                    <p>The editor content goes here.</p>
+                </div>
             </div>
             {!! Form::close() !!}
         </div>
     </div>
 @endsection
 @section('before-script')
-    <script src="https://cdn.ckeditor.com/4.4.5.1/full-all/ckeditor.js"></script>
-
+{{--    <script src="https://cdn.ckeditor.com/4.4.5.1/full-all/ckeditor.js"></script>--}}
+{!! Html::script('assets/plugins/ckeditor5.1/build/ckeditor.js') !!}
+<script src="{!! mix('assets/admin/js/edit-tor.js') !!}"></script>
 @endsection
 
 @section('after-script')
-    <script>
-        CKEDITOR.replace( 'summary-ckeditor');
-    </script>
+{{--    <script>--}}
+{{--        Editor.create( document.querySelector( '#editor' ) )--}}
+{{--            .then( editor => {--}}
+{{--                console.log( editor );--}}
+{{--            } )--}}
+{{--            .catch( error => {--}}
+{{--                console.error( error );--}}
+{{--            } );--}}
+{{--    </script>--}}
 @endsection

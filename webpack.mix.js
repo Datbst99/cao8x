@@ -22,6 +22,7 @@ mix.copy('resources/assets/plugins', 'public/assets/plugins')
 
 // admin
 mix.js('resources/assets/admin/js/lte3x.js', 'public/assets/admin/js')
+mix.js('resources/assets/admin/js/edit-tor.js', 'public/assets/admin/js')
 
 mix.sass('resources/assets/admin/sass/lte3x.scss', 'public/assets/admin/css')
     .sass('resources/assets/admin/sass/main.scss', 'public/assets/admin/css')
