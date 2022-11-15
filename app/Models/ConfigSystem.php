@@ -26,6 +26,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|ConfigSystem whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|ConfigSystem whereValue($value)
  * @mixin \Eloquent
+ * @property string|null $title
+ * @method static \Illuminate\Database\Eloquent\Builder|ConfigSystem whereTitle($value)
  */
 class ConfigSystem extends Model
 {

@@ -36,6 +36,31 @@
 .item-config .push-item {
   border: 4px dashed #4b545c;
   cursor: pointer;
+  position: relative;
+}
+
+.item-config .push-item .action {
+  position: absolute;
+  bottom: 0;
+  z-index: 10;
+  background-color: rgba(17, 17, 17, 0.4);
+  width: 100%;
+  text-align: center;
+  color: #ffffff;
+  padding: 8px 0;
+  display: none;
+  font-weight: 500;
+  justify-content: center;
+  cursor: auto;
+}
+
+.item-config .push-item .deleteFile,
+.item-config .push-item .add-link {
+  cursor: pointer;
+}
+
+.item-config .push-item:hover .action {
+  display: flex;
 }
 
 .item-config .text-banner {

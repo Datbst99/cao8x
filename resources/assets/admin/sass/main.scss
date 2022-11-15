@@ -36,6 +36,30 @@ $text-main-color: #888;
     .push-item {
         border: 4px dashed #4b545c;
         cursor: pointer;
+        position: relative;
+        .action {
+            position: absolute;
+            bottom: 0;
+            z-index: 10;
+            background-color:rgba(17, 17, 17, 0.4);;
+            width: 100%;
+            text-align: center;
+            color: #ffffff;
+            padding: 8px 0;
+            display: none;
+            font-weight: 500;
+            justify-content: center;
+            cursor: auto;
+        }
+        .deleteFile, .add-link {
+            cursor: pointer;
+
+        }
+        &:hover {
+            .action {
+                display: flex;
+            }
+        }
     }
 
     .text-banner {
@@ -59,3 +83,4 @@ $text-main-color: #888;
         z-index: 10;
     }
 }
+

@@ -48,6 +48,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], func
     Route::group(['prefix' => 'config'], function (){
         Route::get('/', [ConfigController::class, 'index'])->name('admin.config');
         Route::post('/', [ConfigController::class, 'store'])->name('admin.config.store');
+        Route::post('/link', [ConfigController::class, 'link'])->name('admin.config.link');
+        Route::post('/delete', [ConfigController::class, 'delete'])->name('admin.config.delete');
     });
 });
 

@@ -4,7 +4,7 @@
 @endsection
 
 @section('content')
-    <main id="main" class>
+    <main id="main">
         <div class="slider">
             <img src="/client/images/banner-web.jpg" alt="">
             <img src="/client/images/banner-web-bo-sung_playfacto.jpg" alt="">

@@ -194,7 +194,7 @@ window.pushData = function (id) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\cao8x\resources\assets\admin\js\edit-tor.js */"./resources/assets/admin/js/edit-tor.js");
+module.exports = __webpack_require__(/*! D:\app\xampp\htdocs\clone\cao8x\resources\assets\admin\js\edit-tor.js */"./resources/assets/admin/js/edit-tor.js");
 
 
 /***/ })

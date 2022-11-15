@@ -17,6 +17,7 @@ class CreateConfigSystemsTable extends Migration
             $table->id();
             $table->string('key');
             $table->string('value')->nullable();
+            $table->string('title')->nullable();
             $table->string('link')->nullable();
             $table->tinyInteger('status')->default(1);
             $table->timestamps();

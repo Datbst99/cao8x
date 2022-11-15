@@ -23,22 +23,65 @@
     @yield('after-style')
 </head>
 <body data-rsssl="1" class="home page-template page-template-chili-homepage page-template-chili-homepage-php page page-id-327 mega-menu-primary boxed lightbox nav-dropdown-has-arrow">
-<a class="skip-link screen-reader-text" href="#main">Skip to content</a>
-<div class="banner-left">
 
-</div>
-<div class="banner-right">
 
-</div>
+<?php
+$bannerLeft  = \App\Models\ConfigSystem::where('key', \App\Models\ConfigSystem::BANNER_LEFT)->first();
+$bannerRight  = \App\Models\ConfigSystem::where('key', \App\Models\ConfigSystem::BANNER_RIGHT)->first();
+$bannerModal  = \App\Models\ConfigSystem::where('key', \App\Models\ConfigSystem::BANNER_MODAL)->first();
+
+?>
+@if($bannerLeft && $bannerLeft->value)
+    <div class="banner-left">
+        <a href="{{$bannerLeft->link}}">
+            <img src="{{$bannerLeft->value}}" alt="{{$bannerLeft->title}}">
+        </a>
+    </div>
+@endif
+
+@if($bannerRight && $bannerRight->value)
+    <div class="banner-right">
+        <a href="{{$bannerRight->link}}">
+            <img src="{{$bannerRight->value}}" alt="{{$bannerRight->title}}">
+        </a>
+    </div>
+@endif
+
 <div id="wrapper">
 
     @include('client.includes._header')
 
-     @yield('content')
+    @yield('content')
 
 
     @include('client.includes._footer')
 </div>
+
+<?php
+    $showModal = Cookie::get('modal');
+
+    if(!$showModal) {
+        Cookie::queue('modal', 'show', 1);
+    }
+?>
+
+@if(!$showModal && $bannerModal && $bannerModal->value)
+    <div>
+        <input class="modal-state d-none" id="modal-1" type="checkbox" checked />
+        <div class="modal">
+            <label class="modal__bg" for="modal-1"></label>
+            <div class="modal__inner">
+                <label class="modal__close" for="modal-1"></label>
+                <div class="banner-modal">
+                    <a href="{{$bannerModal->link}}">
+                        <img src="{{$bannerModal->value}}" alt="{{$bannerModal->title}}">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+@endif
+
 
 
 <script type="text/javascript" src="/assets/plugins/clone/jquery.js"></script>
@@ -62,7 +105,51 @@
             prevArrow: "<button class=\"flickity-button flickity-prev-next-button previous\" type=\"button\" aria-label=\"Previous\"><svg class=\"flickity-button-icon\" viewBox=\"0 0 100 100\"><path d=\"M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z\" class=\"arrow\"></path></svg></button>",
             nextArrow: "<button class=\"flickity-button flickity-prev-next-button next\" type=\"button\" aria-label=\"Next\"><svg class=\"flickity-button-icon\" viewBox=\"0 0 100 100\"><path d=\"M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z\" class=\"arrow\" transform=\"translate(100, 100) rotate(180) \"></path></svg></button>"
         });
+
+        var sizeFullScreen = $(this).width()
+        var elementLeft = $('.banner-left')
+        var elementRight = $('.banner-right')
+        if(sizeFullScreen > 992) {
+            elementLeft.css('display', 'block')
+            elementRight.css('display', 'block')
+            var sizeContainer = $('#wrapper').width()
+            var sizeBannerLeft = elementLeft.width() + 1
+            var sizeBannerRight = elementRight.width() + 1
+            var positionLeft = (sizeFullScreen - sizeContainer) / 2 - sizeBannerLeft
+            var positionRight = (sizeFullScreen - sizeContainer) / 2 - sizeBannerRight
+
+            elementLeft.css('left', positionLeft + 'px')
+            elementRight.css('right', positionRight + 'px')
+        } else {
+            elementLeft.css('display', 'none')
+            elementRight.css('display', 'none')
+        }
+
+        $(window).resize(function (){
+            var sizeFullScreen = $(this).width()
+            var elementLeft = $('.banner-left')
+            var elementRight = $('.banner-right')
+            if(sizeFullScreen > 992) {
+                elementLeft.css('display', 'block')
+                elementRight.css('display', 'block')
+
+                var sizeContainer = $('#wrapper').width()
+                var sizeBannerLeft = elementLeft.width() + 1
+                var sizeBannerRight = elementRight.width() + 1
+                var positionLeft = (sizeFullScreen - sizeContainer) / 2 - sizeBannerLeft
+                var positionRight = (sizeFullScreen - sizeContainer) / 2 - sizeBannerRight
+
+                elementLeft.css('left', positionLeft + 'px')
+                elementRight.css('right', positionRight + 'px')
+            } else {
+                elementLeft.css('display', 'none')
+                elementRight.css('display', 'none')
+            }
+
+        })
     });
+
+
 
 </script>
 </body>

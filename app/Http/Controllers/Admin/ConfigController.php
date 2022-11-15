@@ -20,31 +20,61 @@ class ConfigController extends Controller
 
     public function store(Request $request)
     {
-
-        if($request->get('banner-left')){
+        $name = $request->get('name');
+        $value = $request->get('value');
+        if($name == ConfigSystem::BANNER_LEFT){
             ConfigSystem::updateOrCreate([
                 'key' => ConfigSystem::BANNER_LEFT
             ], [
-                'value' => $request->get('banner-left')
+                'value' => $value
             ]);
         }
-        if($request->get('banner-right')){
+        if($name == ConfigSystem::BANNER_RIGHT){
             ConfigSystem::updateOrCreate([
                 'key' => ConfigSystem::BANNER_RIGHT
             ], [
-                'value' => $request->get('banner-right')
+                'value' => $value
             ]);
         }
-        if($request->get('banner-modal')){
+        if($name == ConfigSystem::BANNER_MODAL){
             ConfigSystem::updateOrCreate([
                 'key' => ConfigSystem::BANNER_MODAL
             ], [
-                'value' => $request->get('banner-modal')
+                'value' => $value
             ]);
         }
 
 
-        return redirect()->back()->with('success', 'Cập nhật hệ thống thành công');
+        return response()->json([
+            'success' => true
+        ]);
 
+    }
+
+    public function link(Request $request)
+    {
+        $config = ConfigSystem::findOrFail($request->get('key'));
+
+        $config->link = $request->get('link');
+        $config->title = $request->get('title');
+
+        $config->save();
+
+        return redirect()->back()->with('success', 'Cập nhật đường dẫn cho banner thành công');
+    }
+
+    public function delete(Request $request)
+    {
+        $name = $request->get('name');
+
+        $config = ConfigSystem::where('key', $name)->first();
+
+        $config->value = '';
+
+        $config->update();
+
+        return response()->json([
+            'success' => true
+        ]);
     }
 }
