@@ -33,9 +33,6 @@ class PageController extends Controller
            'category_id' => $category->id,
         ], [
             'content' => $request->get('content'),
-            'seo_title' => $request->get('seo_title'),
-            'seo_keywords' => $request->get('seo_keywords'),
-            'seo_description' => $request->get('content'),
         ]);
 
         return response()->json([

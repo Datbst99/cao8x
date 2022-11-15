@@ -16,3 +16,48 @@
   color: #888;
 }
 
+.item-config {
+  margin-right: 20px;
+  margin-bottom: 16px;
+}
+
+.item-config .title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #6c757d;
+}
+
+.item-config .banner {
+  width: 200px;
+  height: 400px;
+}
+
+.item-config .push-item {
+  border: 4px dashed #4b545c;
+  cursor: pointer;
+}
+
+.item-config .text-banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 700;
+  color: #6c757d;
+}
+
+.item-config .banner-modal {
+  width: 350px;
+  height: 350px;
+}
+
+.item-config .image-banner {
+  width: 100%;
+}
+
+.item-config .wp-push {
+  display: none;
+  z-index: 10;
+}
+

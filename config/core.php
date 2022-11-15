@@ -9,9 +9,6 @@ return [
 
     ],
 
-    'roles' => ['admin', 'staff', 'user']
-
-
-
+    'roles' => ['admin', 'staff', 'user'],
 
 ];

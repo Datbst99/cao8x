@@ -8,8 +8,8 @@ var option_editor = {
             'strikethrough',
             'removeFormat',
             '|',
-            // 'fontSize',
-            // 'fontFamily',
+            'fontSize',
+            'fontFamily',
             'fontBackgroundColor',
             'fontColor',
             '|',
@@ -26,8 +26,8 @@ var option_editor = {
         'indent',
         'outdent',
         'alignment',
-        'fontBackgroundColor',
-        'fontColor',
+        // 'fontBackgroundColor',
+        // 'fontColor',
         '|',
         'CKFinder',
         // 'imageUpload',
@@ -115,18 +115,12 @@ watchdog.create( document.querySelector('#textareaContent'), option_editor).catc
 
 window.pushData = function (id) {
     let content = editor
-    let seo_title = $("input[name='seo_title']").val()
-    let seo_keywords = $("input[name='seo_keywords']").val()
-    let seo_description = $("input[name='seo_description']").val()
     let _token   = $('meta[name="csrf-token"]').attr('content');
     $.ajax({
         url: `/admin/category/${id}/config/change`,
         method: 'post',
         data : {
             content,
-            seo_title,
-            seo_keywords,
-            seo_description,
             _token: _token
         }
     }).done(function (res) {

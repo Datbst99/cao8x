@@ -33,6 +33,13 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Category findSimilarSlugs(string $attribute, array $config, string $slug)
  * @method static \Illuminate\Database\Eloquent\Builder|Category whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Category withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
+ * @property string|null $seo_title
+ * @property string|null $seo_keywords
+ * @property string|null $seo_description
+ * @property-read \App\Models\PageOfCategory|null $page
+ * @method static \Illuminate\Database\Eloquent\Builder|Category whereSeoDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Category whereSeoKeywords($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Category whereSeoTitle($value)
  */
 class Category extends Model
 {
@@ -104,5 +111,10 @@ class Category extends Model
         }
 
         return  "<span class='text-danger font-weight-bold'>Chưa cấu hình</span>";
+    }
+
+    public function linkPage()
+    {
+        return route('category', ['slug' => $this->slug]);
     }
 }

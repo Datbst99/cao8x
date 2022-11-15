@@ -44,6 +44,9 @@ class CategoryController extends Controller
             'title' => $request->get('title'),
             'index' => $request->get('index'),
             'parent_id' => $request->get('parent_id'),
+            'seo_title' => $request->get('seo_title'),
+            'seo_keywords' => $request->get('seo_keywords'),
+            'seo_description' => $request->get('seo_description'),
             'status' => $request->get('status') == Category::STATUS_ACTIVE ? Category::STATUS_ACTIVE : Category::STATUS_INACTIVE
         ]);
 
@@ -77,6 +80,9 @@ class CategoryController extends Controller
             $category->title = $request->get('title');
             $category->index = $request->get('index');
             $category->parent_id = $request->get('parent_id');
+            $category->seo_title = $request->get('seo_title');
+            $category->seo_keywords = $request->get('seo_keywords');
+            $category->seo_description = $request->get('seo_description');
             $category->status = $request->get('status') == Category::STATUS_ACTIVE ? Category::STATUS_ACTIVE : Category::STATUS_INACTIVE;
             $category->update();
 

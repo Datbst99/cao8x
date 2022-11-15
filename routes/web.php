@@ -5,6 +5,8 @@ use \App\Http\Controllers\Admin\DashboardController;
 use \App\Http\Controllers\Admin\CategoryController;
 use \App\Http\Controllers\Admin\UserController;
 use \App\Http\Controllers\Admin\PageController;
+use \App\Http\Controllers\Admin\ConfigController;
+use App\Http\Controllers\HomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,15 +18,14 @@ use \App\Http\Controllers\Admin\PageController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/c/{slug}', [HomeController::class, 'category'])->name('category');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function (){
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], function (){
     Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');
 
     Route::group(['prefix' => 'user'], function (){
@@ -44,5 +45,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function (){
         Route::post('/{id}/config/change', [PageController::class, 'configChange'])->name('admin.category.configChange');
     });
 
+    Route::group(['prefix' => 'config'], function (){
+        Route::get('/', [ConfigController::class, 'index'])->name('admin.config');
+        Route::post('/', [ConfigController::class, 'store'])->name('admin.config.store');
+    });
 });
 

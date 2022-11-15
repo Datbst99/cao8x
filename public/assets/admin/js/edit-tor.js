@@ -95,12 +95,12 @@
 
 var option_editor = {
   toolbar: {
-    items: ['bold', 'italic', 'underline', 'strikethrough', 'removeFormat', '|', // 'fontSize',
-    // 'fontFamily',
-    'fontBackgroundColor', 'fontColor', '|', 'link']
+    items: ['bold', 'italic', 'underline', 'strikethrough', 'removeFormat', '|', 'fontSize', 'fontFamily', 'fontBackgroundColor', 'fontColor', '|', 'link']
   },
   language: 'vi',
-  blockToolbar: ['heading', '|', 'numberedList', 'bulletedList', '|', 'indent', 'outdent', 'alignment', 'fontBackgroundColor', 'fontColor', '|', 'CKFinder', // 'imageUpload',
+  blockToolbar: ['heading', '|', 'numberedList', 'bulletedList', '|', 'indent', 'outdent', 'alignment', // 'fontBackgroundColor',
+  // 'fontColor',
+  '|', 'CKFinder', // 'imageUpload',
   'blockQuote', 'insertTable', 'htmlEmbed', 'codeBlock', '|', 'horizontalLine', 'pageBreak' // 'mediaEmbed',
   // '|',
   // 'specialCharacters',
@@ -170,9 +170,6 @@ watchdog.create(document.querySelector('#textareaContent'), option_editor)["catc
 
 window.pushData = function (id) {
   var content = editor;
-  var seo_title = $("input[name='seo_title']").val();
-  var seo_keywords = $("input[name='seo_keywords']").val();
-  var seo_description = $("input[name='seo_description']").val();
 
   var _token = $('meta[name="csrf-token"]').attr('content');
 
@@ -181,9 +178,6 @@ window.pushData = function (id) {
     method: 'post',
     data: {
       content: content,
-      seo_title: seo_title,
-      seo_keywords: seo_keywords,
-      seo_description: seo_description,
       _token: _token
     }
   }).done(function (res) {
