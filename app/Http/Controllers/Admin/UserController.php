@@ -5,49 +5,84 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
 use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function index()
     {
+
         $users = User::paginate(15);
-
-        return view('admin.user.index', compact('users'));
-    }
-
-    public function edit($id, Request $request)
-    {
-        $user = User::findOrFail($id);
         $roles = Role::all()->pluck('name', 'id')->toArray();
 
-        if($request->isMethod('post')) {
-            $request->validate([
-                'name' => ['required', 'string', 'max:255'],
-                'email' => ['nullable', 'string', 'email', 'max:255', 'unique:users'],
-                'phone' => ['required', 'numeric', 'unique:users'],
-                'password' => ['nullable', 'string', 'min:8'],
-                'role' => ['required'],
-                'status' => ['required'],
-            ]);
+        return view('admin.user.index', compact('users', 'roles'));
+    }
+
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function edit($id)
+    {
+        $user = User::findOrFail($id);
+        $userRole = $user->roles()->pluck('id')->toArray();
+        $roles = Role::all();
+
+        return view('admin.user.edit', compact('user', 'userRole','roles'));
+    }
+
+    /**
+     * @param $id
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function update($id, Request $request)
+    {
+        $user = User::findOrFail($id);
+
+        $request->validate([
+            'name' => 'required|max:25',
+            'email' => ['required', Rule::unique('users')->ignore($user->id),'email'],
+            'pass' => 'required|string|min:8',
+        ], [
+            'name.required' => 'Tên đăng nhập không được để trống',
+            'name.max' => 'Tên đăng nhập không được trên 25 ký tự',
+            'email.required' => 'Email không được để trống',
+            'email.unique' => 'Email đã được đăng ký',
+            'pass.unique' => 'Nhập mật khẩu',
+            'pass.min' => 'Nhập nhiều hơn 8 ký tự',
+
+        ]);
+
+        $user->update([
+           'name' => $request->get('name'),
+           'email' => $request->get('email'),
+           'password' => bcrypt($request->get('pass'))
+        ]);
 
 
-            $user->name = $request->get('name');
-            $user->email = $request->get('email');
-            $user->phone = $request->get('phone');
+        return redirect()->route('admin.user')->with('success', 'Cập nhật thông tin thành công');
+    }
 
-            if($request->get('password')){
-                $user->password = Hash::make($request->get('password'));
-            }
+    /**
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function delete($id)
+    {
+        $user = User::findOrFail($id);
 
-            $user->status = $request->get('status') == User::STATUS_ACTIVE ? User::STATUS_ACTIVE : User::STATUS_INACTIVE;
-            $user->syncRoles($request->get('role'));
-            $user->update();
-
-            return redirect()->route('admin.user')->with('success', 'Chỉnh sửa thông tin khách hàng thành công');
+        if($user->email == config('core.admin.email')) {
+            return redirect()->back()->with('error', 'Không thể xóa admin mặc định hệ thống');
         }
 
-        return view('admin.user.edit', compact('user', 'roles'));
+        $user->delete();
+
+        return redirect()->route('admin.user')->with('success', 'Xóa tài khoản người dùng thành công');
     }
+
 }

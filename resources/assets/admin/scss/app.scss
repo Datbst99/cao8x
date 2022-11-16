@@ -1,0 +1,151 @@
+@import '~admin-lte/dist/css/adminlte.css';
+@import "../../general/color";
+@import "user";
+
+body {
+    font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+
+.sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link.active {
+    @include gradient-background();
+}
+
+.custom-admin {
+    .nav-sidebar {
+        .nav-header:not(:first-of-type) {
+            font-size: .9rem;
+            padding: 0.5rem 0.75rem;
+        }
+    }
+}
+
+.btn-main {
+    color: $white-main;
+    @include gradient-background();
+    border-color: $primary;
+    &:hover {
+        color: $white-main;
+    }
+}
+
+.btn-main:hover {
+    @include gradient-background-hover();
+}
+
+
+.progressbar {
+    counter-reset: step;
+    margin: 0;
+    padding: 30px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.progressbar li {
+    float: left;
+    list-style: none;
+    position: relative;
+    text-align: center;
+    width: calc(100% / 3);
+}
+.progressbar li:before {
+    background: #fff;
+    border: 2px solid #bebebe;
+    border-radius: 50%;
+    color: #bebebe;
+    content: counter(step);
+    counter-increment: step;
+    display: block;
+    font-weight: 700;
+    height: 50px;
+    line-height: 48px;
+    margin: 0 auto 10px;
+    text-align: center;
+    width: 50px;
+}
+.progressbar li:after {
+    background: #979797;
+    content: '';
+    height: 3px;
+    left: -50%;
+    position: absolute;
+    top: 25px;
+    width: 100%;
+    z-index: -1;
+}
+.progressbar li:first-child:after {
+    content: none;
+}
+.progressbar li.active:after,
+.progressbar li.complete:after {
+    @include gradient-background()
+}
+
+.progressbar li.active:before,
+.progressbar li.complete:before {
+    @include gradient-background();
+    border-color: $primary;
+    color: #fff;
+}
+
+.progressbar li.active {
+    color: $primary;
+    font-weight: 700;
+}
+
+.progressbar li.complete {
+    color: #333;
+    font-weight: 700;
+}
+.progressbar li > a {
+    color: $text-color-main;
+    font-weight: 400
+}
+.progressbar li > a:hover {
+    color: $text-color-main;
+}
+.content-header {
+    .breadcrumb {
+        .breadcrumb-item {
+            a {
+                font-weight: 500;
+                color: #6c757d;
+                font-size: 18px;
+            }
+        }
+        .active {
+            font-weight: 500;
+            color: #474747;
+            font-size: 18px;
+        }
+    }
+}
+
+.custom-paginate {
+    .pagination {
+        justify-content: center;
+        .page-item.active {
+            .page-link {
+                @include gradient-background;
+                color: $white-main;
+                border: 1px solid $primary;
+            }
+        };
+        .page-item {
+            .page-link {
+                border-radius: 10px;
+                color: $text-disable;
+                font-weight: 500;
+            }
+            margin: 0 5px;
+        }
+    }
+
+}
+.sidebar {
+    .nav {
+        i {
+            width: 25px;
+        }
+    }
+}

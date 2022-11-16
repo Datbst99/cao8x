@@ -1,59 +1,105 @@
 @extends('layouts.admin')
-
-@section('title', 'Danh sách danh mục')
-
-@section('breadcrumbs')
-    {{ Breadcrumbs::render('admin.category') }}
-@endsection
+@section('title', 'Quản lý danh mục')
 @section('content')
-    <div class="container">
+    <div class="">
+        @include('includes.admin.breadcrumbs', ['title' => 'Quản lý danh mục', 'name' => 'category'])
+
         <div class="card">
-            <div class="card-body">
-                <div class="text-right">
-                    <a href="{{route('admin.category.create')}}" class="btn btn-primary btn-sm"><i class="far fa-plus"></i> Thêm danh mục</a>
+            <div class="card-header ">
+                <h5 class="card-title">Quản lý danh mục</h5>
+                <div class="float-right">
+                    <a href="{{route('admin.category.add')}}" class="btn btn-sm btn-main"><i class="fas fa-plus"></i> Thêm danh mục</a>
                 </div>
+            </div>
+            <div class="card-body p-0">
                 <div class="table-responsive">
                     <table class="table">
-                        <thead >
-                        <tr class="table-light">
-                            <th class="text-nowrap">Tên danh mục</th>
-                            <th class="text-nowrap">Thứ tự</th>
-                            <th class="text-nowrap">Trạng thái</th>
-                            <th class="text-nowrap">Cấu hình nội dung</th>
-                            <th style="width: 8%">Action</th>
+                        <thead>
+                        <tr>
+                            <th class="text-nowrap">Tên</th>
+                            <th class="text-nowrap">Hiển thị</th>
+                            <th class="text-nowrap">Ngày tạo</th>
+                            <th style="width: 5%" class="text-nowrap">Action</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($categories as $category)
-                        <tr>
-                            <td class="text-nowrap">{{$category->title}}</td>
-                            <td class="text-nowrap">{{$category->index}}</td>
-                            <td class="text-nowrap">{!!  $category->htmlStatus() !!}</td>
-                            <td class="text-nowrap">{!! $category->htmlPageConfig() !!}</td>
-                            <td class="text-nowrap">
-                                <a href="{{$category->linkConfigPage()}}" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Cấu hình nội dung"><i class="far fa-cogs"></i></a>
-                                <a href="{{$category->linkEdit()}}" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Chỉnh sửa"><i class="fas fa-pen"></i></a>
-                                <a href="{{$category->linkDelete()}}" class="btn btn-danger btn-xs" onclick="return confirm(`Bạn có chắc chắn muốn danh mục {{$category->title}} không?`);" data-toggle="tooltip" data-placement="top" title="Xóa"><i class="fas fa-trash"></i></a>
-                            </td>
-                        </tr>
-                            @foreach($category->children as $child)
+                            @foreach($categories as $category)
                                 <tr>
-                                    <td class="text-nowrap"><span class=" ml-2">-- {{$child->title}}</span></td>
-                                    <td class="text-nowrap">{{$child->index}}</td>
-                                    <td class="text-nowrap">{!!  $child->htmlStatus() !!}</td>
-                                    <td class="text-nowrap">{!! $child->htmlPageConfig() !!}</td>
                                     <td class="text-nowrap">
-                                        <a href="{{$child->linkConfigPage()}}" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Cấu hình nội dung"><i class="far fa-cogs"></i></a>
-                                        <a href="{{$child->linkEdit()}}" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Chỉnh sửa"><i class="fas fa-pen"></i></a>
-                                        <a href="{{$child->linkDelete()}}" class="btn btn-danger btn-xs" onclick="return confirm(`Bạn có chắc chắn muốn danh mục {{$child->title}} không?`);" data-toggle="tooltip" data-placement="top" title="Xóa"><i class="fas fa-trash"></i></a>
+                                        <span class="text-primary">{{$category->name}}</span>
+                                    </td>
+                                    <td class="text-nowrap">{!! $category->htmlStatus() !!}</td>
+                                    <td class="text-nowrap">{{$category->created_at}}</td>
+                                    <td class="d-flex">
+                                        <a href="" class="btn btn-xs btn-primary">
+                                            <i class="fa fa-pencil" ></i>
+                                        </a>
+                                        <form method="DELETE" action="{{route('admin.category.delete', ['id' => $category->id])}}">
+                                            @csrf
+                                            <input name="_method" type="hidden" value="DELETE">
+                                            <button type="submit" class="btn btn-xs btn-danger show_confirm">
+                                                <i class="far fa-trash-alt"></i>
+                                            </button>
+                                        </form>
                                     </td>
                                 </tr>
+                               @foreach($category->children as $val)
+                                   <tr>
+                                       <td class="text-nowrap">
+                                           <span class="text-primary">=={{$val->name}}</span>
+                                       </td>
+                                       <td class="text-nowrap">{!! $val->htmlStatus() !!}</td>
+                                       <td class="text-nowrap">{{$val->created_at}}</td>
+                                       <td class="d-flex">
+                                           <a href="" class="btn btn-xs btn-primary">
+                                               <i class="fa fa-pencil" ></i>
+                                           </a>
+                                           <form method="DELETE" action="{{route('admin.category.delete', ['id' => $val->id])}}">
+                                               @csrf
+                                               <input name="_method" type="hidden" value="DELETE">
+                                               <button type="submit" class="btn btn-xs btn-danger show_confirm">
+                                                   <i class="far fa-trash-alt"></i>
+                                               </button>
+                                           </form>
+                                       </td>
+                                   </tr>
+                               @endforeach
                             @endforeach
-                        @endforeach
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </div>
-@stop
+@endsection
+@section('script')
+    {!! Html::script(mix('assets/admin/js/confirm.js')) !!}
+    <script type="text/javascript">
+
+        $('.show_confirm').click(function(event) {
+            var form =  $(this).closest("form");
+            event.preventDefault();
+            const swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: 'btn btn-success mr-2',
+                    cancelButton: 'btn btn-danger'
+                },
+                buttonsStyling: false
+            })
+            swalWithBootstrapButtons.fire({
+                title: `Xóa danh mục`,
+                text: "Bạn có chắc chắn muốn xóa danh mục.",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: 'Xác nhận',
+                cancelButtonText: 'Hủy',
+            })
+                .then((willDelete) => {
+                    if (willDelete.value) {
+                        form.submit();
+                    }
+                });
+        });
+
+    </script>
+@endsection

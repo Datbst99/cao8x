@@ -2,119 +2,143 @@
 
 namespace App\Models;
 
+use Cviebrock\EloquentSluggable\Services\SlugService;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Kalnoy\Nestedset\NodeTrait;
 
 /**
  * App\Models\Category
  *
  * @property int $id
- * @property string $title
- * @property int $index
+ * @property string $name
+ * @property string $slug
+ * @property int $_lft
+ * @property int $_rgt
+ * @property int|null $parent_id
+ * @property int|null $created_by
  * @property int $status
- * @property int $parent_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|Category newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Category newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Category query()
  * @method static \Illuminate\Database\Eloquent\Builder|Category whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Category whereCreatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Category whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Category whereIndex($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Category whereLft($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Category whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Category whereParentId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Category whereRgt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Category whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Category whereStatus($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Category whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Category whereUpdatedAt($value)
  * @mixin \Eloquent
- * @property string $slug
- * @property-read \Illuminate\Database\Eloquent\Collection|Category[] $children
+ * @property string|null $meta_title
+ * @property string|null $meta_keyword
+ * @property string|null $meta_description
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @property-read \Kalnoy\Nestedset\Collection|Category[] $children
  * @property-read int|null $children_count
- * @method static \Illuminate\Database\Eloquent\Builder|Category findSimilarSlugs(string $attribute, array $config, string $slug)
- * @method static \Illuminate\Database\Eloquent\Builder|Category whereSlug($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Category withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
- * @property string|null $seo_title
- * @property string|null $seo_keywords
- * @property string|null $seo_description
- * @property-read \App\Models\PageOfCategory|null $page
- * @method static \Illuminate\Database\Eloquent\Builder|Category whereSeoDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Category whereSeoKeywords($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Category whereSeoTitle($value)
+ * @property-read Category|null $parent
+ * @method static \Kalnoy\Nestedset\Collection|static[] all($columns = ['*'])
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Category ancestorsAndSelf($id, array $columns = [])
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Category ancestorsOf($id, array $columns = [])
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Category applyNestedSetScope(?string $table = null)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Category countErrors()
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Category d()
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Category defaultOrder(string $dir = 'asc')
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Category descendantsAndSelf($id, array $columns = [])
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Category descendantsOf($id, array $columns = [], $andSelf = false)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Category findSimilarSlugs(string $attribute, array $config, string $slug)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Category fixSubtree($root)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Category fixTree($root = null)
+ * @method static \Kalnoy\Nestedset\Collection|static[] get($columns = ['*'])
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Category getNodeData($id, $required = false)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Category getPlainNodeData($id, $required = false)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Category getTotalErrors()
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Category hasChildren()
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Category hasParent()
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Category isBroken()
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Category leaves(array $columns = [])
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Category makeGap(int $cut, int $height)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Category moveNode($key, $position)
+ * @method static \Illuminate\Database\Query\Builder|Category onlyTrashed()
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Category orWhereAncestorOf(bool $id, bool $andSelf = false)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Category orWhereDescendantOf($id)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Category orWhereNodeBetween($values)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Category orWhereNotDescendantOf($id)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Category rebuildSubtree($root, array $data, $delete = false)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Category rebuildTree(array $data, $delete = false, $root = null)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Category reversed()
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Category root(array $columns = [])
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Category whereAncestorOf($id, $andSelf = false, $boolean = 'and')
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Category whereAncestorOrSelf($id)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Category whereDeletedAt($value)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Category whereDescendantOf($id, $boolean = 'and', $not = false, $andSelf = false)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Category whereDescendantOrSelf(string $id, string $boolean = 'and', string $not = false)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Category whereIsAfter($id, $boolean = 'and')
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Category whereIsBefore($id, $boolean = 'and')
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Category whereIsLeaf()
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Category whereIsRoot()
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Category whereMetaDescription($value)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Category whereMetaKeyword($value)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Category whereMetaTitle($value)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Category whereNodeBetween($values, $boolean = 'and', $not = false)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Category whereNotDescendantOf($id)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Category withDepth(string $as = 'depth')
+ * @method static \Illuminate\Database\Query\Builder|Category withTrashed()
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Category withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
+ * @method static \Kalnoy\Nestedset\QueryBuilder|Category withoutRoot()
+ * @method static \Illuminate\Database\Query\Builder|Category withoutTrashed()
  */
 class Category extends Model
 {
-    use HasFactory, Sluggable;
+    use SoftDeletes,Sluggable,NodeTrait {
+        NodeTrait::replicate as replicateNode;
+        Sluggable::replicate as replicateSlug;
+    }
+
+    public function getLftName()
+    {
+        return '_lft';
+    }
+
+    public function getRgtName()
+    {
+        return '_rgt';
+    }
+
+    public function replicate(array $except = null) {
+        $instance = $this->replicateNode($except);
+        (new SlugService())->slug($instance, true);
+
+        return $instance;
+    }
 
     protected $table = 'categories';
-
     protected $guarded = ['id'];
 
+    const STATUS_INIT = 0; // Không public
     const STATUS_ACTIVE = 1;
-    const STATUS_INACTIVE = 0; // ko hoạt động
 
-    public function sluggable(): array
+    public function sluggable()
     {
         return [
             'slug' => [
-                'source' => 'title'
+                'source' => 'name'
             ]
         ];
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function children(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function htmlStatus()
     {
-        return $this->hasMany(Category::class, 'parent_id')->orderBy('index');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function page(): \Illuminate\Database\Eloquent\Relations\HasOne
-    {
-        return $this->hasOne(PageOfCategory::class, 'category_id');
-    }
-
-    /**
-     * @return string
-     */
-    public function htmlStatus(): string
-    {
-        if($this->status == self::STATUS_ACTIVE) {
-            return "<span class='text-success font-weight-bold'>Hiển thị</span>";
+        if($this->status == self::STATUS_ACTIVE){
+            return "<span style='color: green' class='fa fa-check-circle'></span>";
         }
-
-        return "<span class='text-secondary'>Tạm ẩn</span>";
+        return "<span style='color: gray' class='fas fa-times-circle'></span>";
     }
 
-    public function linkEdit(): string
-    {
-        return route('admin.category.edit', ['id' => $this->id]);
-    }
-
-    public function linkDelete(): string
-    {
-        return route('admin.category.delete', ['id' => $this->id]);
-    }
-
-    public function linkConfigPage(): string
-    {
-        return route('admin.category.configPage', ['id' => $this->id]);
-    }
-
-    public function htmlPageConfig(): string
-    {
-        if($this->page()->first()) {
-            return "<span class='text-success'><i class='fal fa-check-circle'></i> Đã cấu hình</span>";
-        }
-
-        return  "<span class='text-danger font-weight-bold'>Chưa cấu hình</span>";
-    }
-
-    public function linkPage()
-    {
-        return route('category', ['slug' => $this->slug]);
-    }
 }

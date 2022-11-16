@@ -4,7 +4,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 8.83.25.
+ * Generated for Laravel 8.83.2.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -2167,17 +2167,6 @@
         {
                         /** @var \Illuminate\Auth\SessionGuard $instance */
                         return $instance->setRequest($request);
-        }
-                    /**
-         * Get the timebox instance used by the guard.
-         *
-         * @return \Illuminate\Support\Timebox 
-         * @static 
-         */ 
-        public static function getTimebox()
-        {
-                        /** @var \Illuminate\Auth\SessionGuard $instance */
-                        return $instance->getTimebox();
         }
                     /**
          * Determine if the current user is authenticated. If not, throw an exception.
@@ -8823,7 +8812,7 @@
                     /**
          * Push a new job onto the queue.
          *
-         * @param string|object $job
+         * @param string $job
          * @param mixed $data
          * @param string|null $queue
          * @return mixed 
@@ -8852,7 +8841,7 @@
          * Push a new job onto the queue after a delay.
          *
          * @param \DateTimeInterface|\DateInterval|int $delay
-         * @param string|object $job
+         * @param string $job
          * @param mixed $data
          * @param string|null $queue
          * @return mixed 
@@ -8867,7 +8856,7 @@
          * Push a new job onto the queue.
          *
          * @param string $queue
-         * @param string|object $job
+         * @param string $job
          * @param mixed $data
          * @return mixed 
          * @static 
@@ -8882,7 +8871,7 @@
          *
          * @param string $queue
          * @param \DateTimeInterface|\DateInterval|int $delay
-         * @param string|object $job
+         * @param string $job
          * @param mixed $data
          * @return mixed 
          * @static 
@@ -11629,7 +11618,6 @@
      * @method static \Illuminate\Routing\RouteRegistrar prefix(string $prefix)
      * @method static \Illuminate\Routing\RouteRegistrar scopeBindings()
      * @method static \Illuminate\Routing\RouteRegistrar where(array $where)
-     * @method static \Illuminate\Routing\RouteRegistrar withoutMiddleware(array|string $middleware)
      * @see \Illuminate\Routing\Router
      */ 
         class Route {
@@ -12502,47 +12490,6 @@
         {
                         /** @var \Illuminate\Routing\Router $instance */
                         return $instance->macroCall($method, $parameters);
-        }
-                    /**
-         * 
-         *
-         * @see \Laravel\Ui\AuthRouteMethods::auth()
-         * @param mixed $options
-         * @static 
-         */ 
-        public static function auth($options = [])
-        {
-                        return \Illuminate\Routing\Router::auth($options);
-        }
-                    /**
-         * 
-         *
-         * @see \Laravel\Ui\AuthRouteMethods::resetPassword()
-         * @static 
-         */ 
-        public static function resetPassword()
-        {
-                        return \Illuminate\Routing\Router::resetPassword();
-        }
-                    /**
-         * 
-         *
-         * @see \Laravel\Ui\AuthRouteMethods::confirmPassword()
-         * @static 
-         */ 
-        public static function confirmPassword()
-        {
-                        return \Illuminate\Routing\Router::confirmPassword();
-        }
-                    /**
-         * 
-         *
-         * @see \Laravel\Ui\AuthRouteMethods::emailVerification()
-         * @static 
-         */ 
-        public static function emailVerification()
-        {
-                        return \Illuminate\Routing\Router::emailVerification();
         }
          
     }
@@ -16942,429 +16889,81 @@
         }
          
     }
+     
+}
+
+    namespace Intervention\Image\Facades { 
             /**
      * 
      *
-     * @see \Collective\Html\HtmlBuilder
      */ 
-        class HtmlFacade {
+        class Image {
                     /**
-         * Convert an HTML string to entities.
+         * Overrides configuration settings
          *
-         * @param string $value
-         * @return string 
+         * @param array $config
+         * @return self 
          * @static 
          */ 
-        public static function entities($value)
+        public static function configure($config = [])
         {
-                        /** @var \Collective\Html\HtmlBuilder $instance */
-                        return $instance->entities($value);
+                        /** @var \Intervention\Image\ImageManager $instance */
+                        return $instance->configure($config);
         }
                     /**
-         * Convert entities to HTML characters.
+         * Initiates an Image instance from different input types
          *
-         * @param string $value
-         * @return string 
+         * @param mixed $data
+         * @return \Intervention\Image\Image 
          * @static 
          */ 
-        public static function decode($value)
+        public static function make($data)
         {
-                        /** @var \Collective\Html\HtmlBuilder $instance */
-                        return $instance->decode($value);
+                        /** @var \Intervention\Image\ImageManager $instance */
+                        return $instance->make($data);
         }
                     /**
-         * Generate a link to a JavaScript file.
+         * Creates an empty image canvas
          *
-         * @param string $url
-         * @param array $attributes
-         * @param bool $secure
-         * @return \Illuminate\Support\HtmlString 
+         * @param int $width
+         * @param int $height
+         * @param mixed $background
+         * @return \Intervention\Image\Image 
          * @static 
          */ 
-        public static function script($url, $attributes = [], $secure = null)
+        public static function canvas($width, $height, $background = null)
         {
-                        /** @var \Collective\Html\HtmlBuilder $instance */
-                        return $instance->script($url, $attributes, $secure);
+                        /** @var \Intervention\Image\ImageManager $instance */
+                        return $instance->canvas($width, $height, $background);
         }
                     /**
-         * Generate a link to a CSS file.
+         * Create new cached image and run callback
+         * (requires additional package intervention/imagecache)
          *
-         * @param string $url
-         * @param array $attributes
-         * @param bool $secure
-         * @return \Illuminate\Support\HtmlString 
+         * @param \Closure $callback
+         * @param int $lifetime
+         * @param boolean $returnObj
+         * @return \Image 
          * @static 
          */ 
-        public static function style($url, $attributes = [], $secure = null)
+        public static function cache($callback, $lifetime = null, $returnObj = false)
         {
-                        /** @var \Collective\Html\HtmlBuilder $instance */
-                        return $instance->style($url, $attributes, $secure);
-        }
-                    /**
-         * Generate an HTML image element.
-         *
-         * @param string $url
-         * @param string $alt
-         * @param array $attributes
-         * @param bool $secure
-         * @return \Illuminate\Support\HtmlString 
-         * @static 
-         */ 
-        public static function image($url, $alt = null, $attributes = [], $secure = null)
-        {
-                        /** @var \Collective\Html\HtmlBuilder $instance */
-                        return $instance->image($url, $alt, $attributes, $secure);
-        }
-                    /**
-         * Generate a link to a Favicon file.
-         *
-         * @param string $url
-         * @param array $attributes
-         * @param bool $secure
-         * @return \Illuminate\Support\HtmlString 
-         * @static 
-         */ 
-        public static function favicon($url, $attributes = [], $secure = null)
-        {
-                        /** @var \Collective\Html\HtmlBuilder $instance */
-                        return $instance->favicon($url, $attributes, $secure);
-        }
-                    /**
-         * Generate a HTML link.
-         *
-         * @param string $url
-         * @param string $title
-         * @param array $attributes
-         * @param bool $secure
-         * @param bool $escape
-         * @return \Illuminate\Support\HtmlString 
-         * @static 
-         */ 
-        public static function link($url, $title = null, $attributes = [], $secure = null, $escape = true)
-        {
-                        /** @var \Collective\Html\HtmlBuilder $instance */
-                        return $instance->link($url, $title, $attributes, $secure, $escape);
-        }
-                    /**
-         * Generate a HTTPS HTML link.
-         *
-         * @param string $url
-         * @param string $title
-         * @param array $attributes
-         * @param bool $escape
-         * @return \Illuminate\Support\HtmlString 
-         * @static 
-         */ 
-        public static function secureLink($url, $title = null, $attributes = [], $escape = true)
-        {
-                        /** @var \Collective\Html\HtmlBuilder $instance */
-                        return $instance->secureLink($url, $title, $attributes, $escape);
-        }
-                    /**
-         * Generate a HTML link to an asset.
-         *
-         * @param string $url
-         * @param string $title
-         * @param array $attributes
-         * @param bool $secure
-         * @param bool $escape
-         * @return \Illuminate\Support\HtmlString 
-         * @static 
-         */ 
-        public static function linkAsset($url, $title = null, $attributes = [], $secure = null, $escape = true)
-        {
-                        /** @var \Collective\Html\HtmlBuilder $instance */
-                        return $instance->linkAsset($url, $title, $attributes, $secure, $escape);
-        }
-                    /**
-         * Generate a HTTPS HTML link to an asset.
-         *
-         * @param string $url
-         * @param string $title
-         * @param array $attributes
-         * @param bool $escape
-         * @return \Illuminate\Support\HtmlString 
-         * @static 
-         */ 
-        public static function linkSecureAsset($url, $title = null, $attributes = [], $escape = true)
-        {
-                        /** @var \Collective\Html\HtmlBuilder $instance */
-                        return $instance->linkSecureAsset($url, $title, $attributes, $escape);
-        }
-                    /**
-         * Generate a HTML link to a named route.
-         *
-         * @param string $name
-         * @param string $title
-         * @param array $parameters
-         * @param array $attributes
-         * @param bool $secure
-         * @param bool $escape
-         * @return \Illuminate\Support\HtmlString 
-         * @static 
-         */ 
-        public static function linkRoute($name, $title = null, $parameters = [], $attributes = [], $secure = null, $escape = true)
-        {
-                        /** @var \Collective\Html\HtmlBuilder $instance */
-                        return $instance->linkRoute($name, $title, $parameters, $attributes, $secure, $escape);
-        }
-                    /**
-         * Generate a HTML link to a controller action.
-         *
-         * @param string $action
-         * @param string $title
-         * @param array $parameters
-         * @param array $attributes
-         * @param bool $secure
-         * @param bool $escape
-         * @return \Illuminate\Support\HtmlString 
-         * @static 
-         */ 
-        public static function linkAction($action, $title = null, $parameters = [], $attributes = [], $secure = null, $escape = true)
-        {
-                        /** @var \Collective\Html\HtmlBuilder $instance */
-                        return $instance->linkAction($action, $title, $parameters, $attributes, $secure, $escape);
-        }
-                    /**
-         * Generate a HTML link to an email address.
-         *
-         * @param string $email
-         * @param string $title
-         * @param array $attributes
-         * @param bool $escape
-         * @return \Illuminate\Support\HtmlString 
-         * @static 
-         */ 
-        public static function mailto($email, $title = null, $attributes = [], $escape = true)
-        {
-                        /** @var \Collective\Html\HtmlBuilder $instance */
-                        return $instance->mailto($email, $title, $attributes, $escape);
-        }
-                    /**
-         * Obfuscate an e-mail address to prevent spam-bots from sniffing it.
-         *
-         * @param string $email
-         * @return string 
-         * @static 
-         */ 
-        public static function email($email)
-        {
-                        /** @var \Collective\Html\HtmlBuilder $instance */
-                        return $instance->email($email);
-        }
-                    /**
-         * Generates non-breaking space entities based on number supplied.
-         *
-         * @param int $num
-         * @return string 
-         * @static 
-         */ 
-        public static function nbsp($num = 1)
-        {
-                        /** @var \Collective\Html\HtmlBuilder $instance */
-                        return $instance->nbsp($num);
-        }
-                    /**
-         * Generate an ordered list of items.
-         *
-         * @param array $list
-         * @param array $attributes
-         * @return \Illuminate\Support\HtmlString|string 
-         * @static 
-         */ 
-        public static function ol($list, $attributes = [])
-        {
-                        /** @var \Collective\Html\HtmlBuilder $instance */
-                        return $instance->ol($list, $attributes);
-        }
-                    /**
-         * Generate an un-ordered list of items.
-         *
-         * @param array $list
-         * @param array $attributes
-         * @return \Illuminate\Support\HtmlString|string 
-         * @static 
-         */ 
-        public static function ul($list, $attributes = [])
-        {
-                        /** @var \Collective\Html\HtmlBuilder $instance */
-                        return $instance->ul($list, $attributes);
-        }
-                    /**
-         * Generate a description list of items.
-         *
-         * @param array $list
-         * @param array $attributes
-         * @return \Illuminate\Support\HtmlString 
-         * @static 
-         */ 
-        public static function dl($list, $attributes = [])
-        {
-                        /** @var \Collective\Html\HtmlBuilder $instance */
-                        return $instance->dl($list, $attributes);
-        }
-                    /**
-         * Build an HTML attribute string from an array.
-         *
-         * @param array $attributes
-         * @return string 
-         * @static 
-         */ 
-        public static function attributes($attributes)
-        {
-                        /** @var \Collective\Html\HtmlBuilder $instance */
-                        return $instance->attributes($attributes);
-        }
-                    /**
-         * Obfuscate a string to prevent spam-bots from sniffing it.
-         *
-         * @param string $value
-         * @return string 
-         * @static 
-         */ 
-        public static function obfuscate($value)
-        {
-                        /** @var \Collective\Html\HtmlBuilder $instance */
-                        return $instance->obfuscate($value);
-        }
-                    /**
-         * Generate a meta tag.
-         *
-         * @param string $name
-         * @param string $content
-         * @param array $attributes
-         * @return \Illuminate\Support\HtmlString 
-         * @static 
-         */ 
-        public static function meta($name, $content, $attributes = [])
-        {
-                        /** @var \Collective\Html\HtmlBuilder $instance */
-                        return $instance->meta($name, $content, $attributes);
-        }
-                    /**
-         * Generate an html tag.
-         *
-         * @param string $tag
-         * @param mixed $content
-         * @param array $attributes
-         * @return \Illuminate\Support\HtmlString 
-         * @static 
-         */ 
-        public static function tag($tag, $content, $attributes = [])
-        {
-                        /** @var \Collective\Html\HtmlBuilder $instance */
-                        return $instance->tag($tag, $content, $attributes);
-        }
-                    /**
-         * Register a custom macro.
-         *
-         * @param string $name
-         * @param object|callable $macro
-         * @return void 
-         * @static 
-         */ 
-        public static function macro($name, $macro)
-        {
-                        \Collective\Html\HtmlBuilder::macro($name, $macro);
-        }
-                    /**
-         * Mix another object into the class.
-         *
-         * @param object $mixin
-         * @param bool $replace
-         * @return void 
-         * @throws \ReflectionException
-         * @static 
-         */ 
-        public static function mixin($mixin, $replace = true)
-        {
-                        \Collective\Html\HtmlBuilder::mixin($mixin, $replace);
-        }
-                    /**
-         * Checks if macro is registered.
-         *
-         * @param string $name
-         * @return bool 
-         * @static 
-         */ 
-        public static function hasMacro($name)
-        {
-                        return \Collective\Html\HtmlBuilder::hasMacro($name);
-        }
-                    /**
-         * Flush the existing macros.
-         *
-         * @return void 
-         * @static 
-         */ 
-        public static function flushMacros()
-        {
-                        \Collective\Html\HtmlBuilder::flushMacros();
-        }
-                    /**
-         * Dynamically handle calls to the class.
-         *
-         * @param string $method
-         * @param array $parameters
-         * @return mixed 
-         * @throws \BadMethodCallException
-         * @static 
-         */ 
-        public static function macroCall($method, $parameters)
-        {
-                        /** @var \Collective\Html\HtmlBuilder $instance */
-                        return $instance->macroCall($method, $parameters);
-        }
-                    /**
-         * Register a custom component.
-         *
-         * @param $name
-         * @param $view
-         * @param array $signature
-         * @return void 
-         * @static 
-         */ 
-        public static function component($name, $view, $signature)
-        {
-                        \Collective\Html\HtmlBuilder::component($name, $view, $signature);
-        }
-                    /**
-         * Check if a component is registered.
-         *
-         * @param $name
-         * @return bool 
-         * @static 
-         */ 
-        public static function hasComponent($name)
-        {
-                        return \Collective\Html\HtmlBuilder::hasComponent($name);
-        }
-                    /**
-         * Dynamically handle calls to the class.
-         *
-         * @param string $method
-         * @param array $parameters
-         * @return \Illuminate\Contracts\View\View|mixed 
-         * @throws \BadMethodCallException
-         * @static 
-         */ 
-        public static function componentCall($method, $parameters)
-        {
-                        /** @var \Collective\Html\HtmlBuilder $instance */
-                        return $instance->componentCall($method, $parameters);
+                        /** @var \Intervention\Image\ImageManager $instance */
+                        return $instance->cache($callback, $lifetime, $returnObj);
         }
          
     }
      
 }
 
-    namespace DaveJamesMiller\Breadcrumbs\Facades { 
+    namespace Diglactic\Breadcrumbs { 
             /**
      * Breadcrumbs facade - allows easy access to the Manager instance.
      *
+     * @method static void register(string $name, callable $callback)
      * @method static array getCurrentRoute()
      * @mixin \Illuminate\Support\Traits\Macroable
-     * @see BreadcrumbsManager
+     * @see Manager
      */ 
         class Breadcrumbs {
                     /**
@@ -17372,35 +16971,15 @@
          *
          * @param string $name The name of the page.
          * @param callable $callback The callback, which should accept a Generator instance as the first parameter and may
-         *     accept additional parameters.
+         *                           accept additional parameters.
          * @return void 
-         * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\DuplicateBreadcrumbException If the given name has already been
-         *     used.
+         * @throws \Diglactic\Breadcrumbs\Exceptions\DuplicateBreadcrumbException If the given name has already been used.
          * @static 
          */ 
         public static function for($name, $callback)
         {
-                        /** @var \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager $instance */
+                        /** @var \Diglactic\Breadcrumbs\Manager $instance */
                         $instance->for($name, $callback);
-        }
-                    /**
-         * Register a breadcrumb-generating callback for a page.
-         * 
-         * For backwards-compatibility with v5.0.0 and below.
-         *
-         * @param string $name The name of the page.
-         * @param callable $callback The callback, which should accept a Generator instance as the first parameter and may
-         *     accept additional parameters.
-         * @return void 
-         * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\DuplicateBreadcrumbException If the given name has already been
-         *     used.
-         * @see self::for()
-         * @static 
-         */ 
-        public static function register($name, $callback)
-        {
-                        /** @var \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager $instance */
-                        $instance->register($name, $callback);
         }
                     /**
          * Register a closure to call before generating breadcrumbs for the current page.
@@ -17413,7 +16992,7 @@
          */ 
         public static function before($callback)
         {
-                        /** @var \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager $instance */
+                        /** @var \Diglactic\Breadcrumbs\Manager $instance */
                         $instance->before($callback);
         }
                     /**
@@ -17427,7 +17006,7 @@
          */ 
         public static function after($callback)
         {
-                        /** @var \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager $instance */
+                        /** @var \Diglactic\Breadcrumbs\Manager $instance */
                         $instance->after($callback);
         }
                     /**
@@ -17441,7 +17020,7 @@
          */ 
         public static function exists($name = null)
         {
-                        /** @var \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager $instance */
+                        /** @var \Diglactic\Breadcrumbs\Manager $instance */
                         return $instance->exists($name);
         }
                     /**
@@ -17450,15 +17029,15 @@
          * @param string|null $name The name of the current page.
          * @param mixed $params The parameters to pass to the closure for the current page.
          * @return \Illuminate\Support\Collection The generated breadcrumbs.
-         * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\UnnamedRouteException if no name is given and the current route
-         *     doesn't have an associated name.
-         * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\InvalidBreadcrumbException if the name is (or any ancestor names
-         *     are) not registered.
+         * @throws \Diglactic\Breadcrumbs\Exceptions\UnnamedRouteException if no name is given and the current route doesn't
+         *                                                                 have an associated name.
+         * @throws \Diglactic\Breadcrumbs\Exceptions\InvalidBreadcrumbException if the name is (or any ancestor names  are)
+         *                                                                      not registered.
          * @static 
          */ 
         public static function generate($name = null, ...$params)
         {
-                        /** @var \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager $instance */
+                        /** @var \Diglactic\Breadcrumbs\Manager $instance */
                         return $instance->generate($name, ...$params);
         }
                     /**
@@ -17467,15 +17046,16 @@
          * @param string $view The name of the view to render.
          * @param string|null $name The name of the current page.
          * @param mixed $params The parameters to pass to the closure for the current page.
-         * @return \Illuminate\Support\HtmlString The generated HTML.
-         * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\InvalidBreadcrumbException if the name is (or any ancestor names are) not registered.
-         * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\UnnamedRouteException if no name is given and the current route doesn't have an associated name.
-         * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\ViewNotSetException if no view has been set.
+         * @return \Illuminate\View\View The generated HTML.
+         * @throws \Diglactic\Breadcrumbs\Exceptions\InvalidBreadcrumbException if the name is (or any ancestor names are)
+         *                                                                      not registered.
+         * @throws \Diglactic\Breadcrumbs\Exceptions\UnnamedRouteException if no name is given and the current route doesn't
+         *                                                                 have an associated name.
          * @static 
          */ 
         public static function view($view, $name = null, ...$params)
         {
-                        /** @var \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager $instance */
+                        /** @var \Diglactic\Breadcrumbs\Manager $instance */
                         return $instance->view($view, $name, ...$params);
         }
                     /**
@@ -17483,30 +17063,32 @@
          *
          * @param string|null $name The name of the current page.
          * @param mixed $params The parameters to pass to the closure for the current page.
-         * @return \Illuminate\Support\HtmlString The generated HTML.
-         * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\InvalidBreadcrumbException if the name is (or any ancestor names are) not registered.
-         * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\UnnamedRouteException if no name is given and the current route doesn't have an associated name.
-         * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\ViewNotSetException if no view has been set.
+         * @return \Illuminate\Contracts\View\View The generated view.
+         * @throws \Diglactic\Breadcrumbs\Exceptions\InvalidBreadcrumbException if the name is (or any ancestor names are)
+         *                                                                      not registered.
+         * @throws \Diglactic\Breadcrumbs\Exceptions\UnnamedRouteException if no name is given and the current route doesn't
+         *                                                                 have an associated name.
+         * @throws \Diglactic\Breadcrumbs\Exceptions\ViewNotSetException if no view has been set.
          * @static 
          */ 
         public static function render($name = null, ...$params)
         {
-                        /** @var \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager $instance */
+                        /** @var \Diglactic\Breadcrumbs\Manager $instance */
                         return $instance->render($name, ...$params);
         }
                     /**
          * Get the last breadcrumb for the current page.
-         * 
-         * Optionally pass a
          *
-         * @return \stdClass|null The breadcrumb for the current page.
-         * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\UnnamedRouteException if the current route doesn't have an associated name.
-         * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\InvalidBreadcrumbException if the name is (or any ancestor names are) not registered.
+         * @return object|null The breadcrumb for the current page.
+         * @throws \Diglactic\Breadcrumbs\Exceptions\UnnamedRouteException if the current route doesn't have an associated
+         *                                                                 name.
+         * @throws \Diglactic\Breadcrumbs\Exceptions\InvalidBreadcrumbException if the name is (or any ancestor names are)
+         *                                                                      not registered.
          * @static 
          */ 
         public static function current()
         {
-                        /** @var \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager $instance */
+                        /** @var \Diglactic\Breadcrumbs\Manager $instance */
                         return $instance->current();
         }
                     /**
@@ -17519,7 +17101,7 @@
          */ 
         public static function setCurrentRoute($name, ...$params)
         {
-                        /** @var \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager $instance */
+                        /** @var \Diglactic\Breadcrumbs\Manager $instance */
                         $instance->setCurrentRoute($name, ...$params);
         }
                     /**
@@ -17532,7 +17114,7 @@
          */ 
         public static function clearCurrentRoute()
         {
-                        /** @var \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager $instance */
+                        /** @var \Diglactic\Breadcrumbs\Manager $instance */
                         $instance->clearCurrentRoute();
         }
                     /**
@@ -17545,7 +17127,7 @@
          */ 
         public static function macro($name, $macro)
         {
-                        \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::macro($name, $macro);
+                        \Diglactic\Breadcrumbs\Manager::macro($name, $macro);
         }
                     /**
          * Mix another object into the class.
@@ -17558,7 +17140,7 @@
          */ 
         public static function mixin($mixin, $replace = true)
         {
-                        \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::mixin($mixin, $replace);
+                        \Diglactic\Breadcrumbs\Manager::mixin($mixin, $replace);
         }
                     /**
          * Checks if macro is registered.
@@ -17569,7 +17151,7 @@
          */ 
         public static function hasMacro($name)
         {
-                        return \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::hasMacro($name);
+                        return \Diglactic\Breadcrumbs\Manager::hasMacro($name);
         }
                     /**
          * Flush the existing macros.
@@ -17579,7 +17161,7 @@
          */ 
         public static function flushMacros()
         {
-                        \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::flushMacros();
+                        \Diglactic\Breadcrumbs\Manager::flushMacros();
         }
          
     }
@@ -17631,16 +17213,6 @@
         {
                         /** @var \Facade\FlareClient\Flare $instance */
                         return $instance->filterExceptionsUsing($filterExceptionsCallable);
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function filterReportsUsing($filterReportsCallable)
-        {
-                        /** @var \Facade\FlareClient\Flare $instance */
-                        return $instance->filterReportsUsing($filterReportsCallable);
         }
                     /**
          * 
@@ -17888,424 +17460,33 @@
      
 }
 
-    namespace Revolution\Google\Sheets\Facades { 
+    namespace Laracasts\Utilities\JavaScript { 
             /**
      * 
      *
-     * @mixin \Revolution\Google\Sheets\Sheets
      */ 
-        class Sheets {
+        class JavaScriptFacade {
                     /**
-         * 
+         * Bind the given array of variables to the view.
          *
-         * @param \Google\Service\Sheets|\Google\Service $service
-         * @return \Revolution\Google\Sheets\Sheets 
          * @static 
          */ 
-        public static function setService($service)
+        public static function put()
         {
-                        /** @var \Revolution\Google\Sheets\Sheets $instance */
-                        return $instance->setService($service);
+                        /** @var \Laracasts\Utilities\JavaScript\Transformers\Transformer $instance */
+                        return $instance->put();
         }
                     /**
-         * 
+         * Translate the array of PHP variables to a JavaScript syntax.
          *
-         * @return \Google\Service\Sheets 
-         * @static 
-         */ 
-        public static function getService()
-        {
-                        /** @var \Revolution\Google\Sheets\Sheets $instance */
-                        return $instance->getService();
-        }
-                    /**
-         * set access_token and set new service.
-         *
-         * @param string|array $token
-         * @return \Revolution\Google\Sheets\Sheets 
-         * @throws \Exception
-         * @static 
-         */ 
-        public static function setAccessToken($token)
-        {
-                        /** @var \Revolution\Google\Sheets\Sheets $instance */
-                        return $instance->setAccessToken($token);
-        }
-                    /**
-         * 
-         *
+         * @param array $variables
          * @return array 
          * @static 
          */ 
-        public static function getAccessToken()
+        public static function constructJavaScript($variables)
         {
-                        /** @var \Revolution\Google\Sheets\Sheets $instance */
-                        return $instance->getAccessToken();
-        }
-                    /**
-         * 
-         *
-         * @param string $spreadsheetId
-         * @return \Revolution\Google\Sheets\Sheets 
-         * @static 
-         */ 
-        public static function spreadsheet($spreadsheetId)
-        {
-                        /** @var \Revolution\Google\Sheets\Sheets $instance */
-                        return $instance->spreadsheet($spreadsheetId);
-        }
-                    /**
-         * 
-         *
-         * @param string $title
-         * @return \Revolution\Google\Sheets\Sheets 
-         * @static 
-         */ 
-        public static function spreadsheetByTitle($title)
-        {
-                        /** @var \Revolution\Google\Sheets\Sheets $instance */
-                        return $instance->spreadsheetByTitle($title);
-        }
-                    /**
-         * 
-         *
-         * @param string $sheet
-         * @return \Revolution\Google\Sheets\Sheets 
-         * @static 
-         */ 
-        public static function sheet($sheet)
-        {
-                        /** @var \Revolution\Google\Sheets\Sheets $instance */
-                        return $instance->sheet($sheet);
-        }
-                    /**
-         * 
-         *
-         * @param string $sheetId
-         * @return \Revolution\Google\Sheets\Sheets 
-         * @static 
-         */ 
-        public static function sheetById($sheetId)
-        {
-                        /** @var \Revolution\Google\Sheets\Sheets $instance */
-                        return $instance->sheetById($sheetId);
-        }
-                    /**
-         * 
-         *
-         * @return array 
-         * @static 
-         */ 
-        public static function sheetList()
-        {
-                        /** @var \Revolution\Google\Sheets\Sheets $instance */
-                        return $instance->sheetList();
-        }
-                    /**
-         * 
-         *
-         * @param string $sheetTitle
-         * @return \Google_Service_Sheets_BatchUpdateSpreadsheetResponse 
-         * @static 
-         */ 
-        public static function addSheet($sheetTitle)
-        {
-                        /** @var \Revolution\Google\Sheets\Sheets $instance */
-                        return $instance->addSheet($sheetTitle);
-        }
-                    /**
-         * 
-         *
-         * @param string $sheetTitle
-         * @return \Google_Service_Sheets_BatchUpdateSpreadsheetResponse 
-         * @static 
-         */ 
-        public static function deleteSheet($sheetTitle)
-        {
-                        /** @var \Revolution\Google\Sheets\Sheets $instance */
-                        return $instance->deleteSheet($sheetTitle);
-        }
-                    /**
-         * 
-         *
-         * @return array 
-         * @static 
-         */ 
-        public static function all()
-        {
-                        /** @var \Revolution\Google\Sheets\Sheets $instance */
-                        return $instance->all();
-        }
-                    /**
-         * 
-         *
-         * @return array 
-         * @static 
-         */ 
-        public static function first()
-        {
-                        /** @var \Revolution\Google\Sheets\Sheets $instance */
-                        return $instance->first();
-        }
-                    /**
-         * 
-         *
-         * @param array $value
-         * @param string $valueInputOption
-         * @return mixed|\Google_Service_Sheets_UpdateValuesResponse 
-         * @static 
-         */ 
-        public static function update($value, $valueInputOption = 'RAW')
-        {
-                        /** @var \Revolution\Google\Sheets\Sheets $instance */
-                        return $instance->update($value, $valueInputOption);
-        }
-                    /**
-         * 
-         *
-         * @return mixed|\Revolution\Google\Sheets\ClearValuesResponse 
-         * @static 
-         */ 
-        public static function clear()
-        {
-                        /** @var \Revolution\Google\Sheets\Sheets $instance */
-                        return $instance->clear();
-        }
-                    /**
-         * 
-         *
-         * @param array $values
-         * @param string $valueInputOption
-         * @param string $insertDataOption
-         * @return mixed|\Google_Service_Sheets_AppendValuesResponse 
-         * @static 
-         */ 
-        public static function append($values, $valueInputOption = 'RAW', $insertDataOption = 'OVERWRITE')
-        {
-                        /** @var \Revolution\Google\Sheets\Sheets $instance */
-                        return $instance->append($values, $valueInputOption, $insertDataOption);
-        }
-                    /**
-         * 
-         *
-         * @param array $values
-         * @return array 
-         * @static 
-         */ 
-        public static function orderAppendables($values)
-        {
-                        /** @var \Revolution\Google\Sheets\Sheets $instance */
-                        return $instance->orderAppendables($values);
-        }
-                    /**
-         * 
-         *
-         * @return string 
-         * @static 
-         */ 
-        public static function ranges()
-        {
-                        /** @var \Revolution\Google\Sheets\Sheets $instance */
-                        return $instance->ranges();
-        }
-                    /**
-         * 
-         *
-         * @param string $range
-         * @return \Revolution\Google\Sheets\Sheets 
-         * @static 
-         */ 
-        public static function range($range)
-        {
-                        /** @var \Revolution\Google\Sheets\Sheets $instance */
-                        return $instance->range($range);
-        }
-                    /**
-         * 
-         *
-         * @param string $majorDimension
-         * @return \Revolution\Google\Sheets\Sheets 
-         * @static 
-         */ 
-        public static function majorDimension($majorDimension)
-        {
-                        /** @var \Revolution\Google\Sheets\Sheets $instance */
-                        return $instance->majorDimension($majorDimension);
-        }
-                    /**
-         * 
-         *
-         * @param string $valueRenderOption
-         * @return \Revolution\Google\Sheets\Sheets 
-         * @static 
-         */ 
-        public static function valueRenderOption($valueRenderOption)
-        {
-                        /** @var \Revolution\Google\Sheets\Sheets $instance */
-                        return $instance->valueRenderOption($valueRenderOption);
-        }
-                    /**
-         * 
-         *
-         * @param string $dateTimeRenderOption
-         * @return \Revolution\Google\Sheets\Sheets 
-         * @static 
-         */ 
-        public static function dateTimeRenderOption($dateTimeRenderOption)
-        {
-                        /** @var \Revolution\Google\Sheets\Sheets $instance */
-                        return $instance->dateTimeRenderOption($dateTimeRenderOption);
-        }
-                    /**
-         * 
-         *
-         * @return array 
-         * @static 
-         */ 
-        public static function spreadsheetList()
-        {
-                        /** @var \Revolution\Google\Sheets\Sheets $instance */
-                        return $instance->spreadsheetList();
-        }
-                    /**
-         * 
-         *
-         * @param \Revolution\Google\Sheets\Drive|\Google\Service $drive
-         * @return \Revolution\Google\Sheets\Sheets 
-         * @static 
-         */ 
-        public static function setDriveService($drive)
-        {
-                        /** @var \Revolution\Google\Sheets\Sheets $instance */
-                        return $instance->setDriveService($drive);
-        }
-                    /**
-         * 
-         *
-         * @return \Revolution\Google\Sheets\Drive|\Google\Service 
-         * @static 
-         */ 
-        public static function getDriveService()
-        {
-                        /** @var \Revolution\Google\Sheets\Sheets $instance */
-                        return $instance->getDriveService();
-        }
-                    /**
-         * 
-         *
-         * @return \stdClass 
-         * @static 
-         */ 
-        public static function spreadsheetProperties()
-        {
-                        /** @var \Revolution\Google\Sheets\Sheets $instance */
-                        return $instance->spreadsheetProperties();
-        }
-                    /**
-         * 
-         *
-         * @return \stdClass 
-         * @static 
-         */ 
-        public static function sheetProperties()
-        {
-                        /** @var \Revolution\Google\Sheets\Sheets $instance */
-                        return $instance->sheetProperties();
-        }
-                    /**
-         * 
-         *
-         * @return string 
-         * @static 
-         */ 
-        public static function getSpreadsheetId()
-        {
-                        /** @var \Revolution\Google\Sheets\Sheets $instance */
-                        return $instance->getSpreadsheetId();
-        }
-                    /**
-         * 
-         *
-         * @return \Revolution\Google\Sheets\Collection 
-         * @static 
-         */ 
-        public static function get()
-        {
-                        /** @var \Revolution\Google\Sheets\Sheets $instance */
-                        return $instance->get();
-        }
-                    /**
-         * 
-         *
-         * @param array $header
-         * @param array|\Revolution\Google\Sheets\Collection $rows
-         * @return \Revolution\Google\Sheets\Collection 
-         * @static 
-         */ 
-        public static function collection($header, $rows)
-        {
-                        /** @var \Revolution\Google\Sheets\Sheets $instance */
-                        return $instance->collection($header, $rows);
-        }
-                    /**
-         * Register a custom macro.
-         *
-         * @param string $name
-         * @param object|callable $macro
-         * @return void 
-         * @static 
-         */ 
-        public static function macro($name, $macro)
-        {
-                        \Revolution\Google\Sheets\Sheets::macro($name, $macro);
-        }
-                    /**
-         * Mix another object into the class.
-         *
-         * @param object $mixin
-         * @param bool $replace
-         * @return void 
-         * @throws \ReflectionException
-         * @static 
-         */ 
-        public static function mixin($mixin, $replace = true)
-        {
-                        \Revolution\Google\Sheets\Sheets::mixin($mixin, $replace);
-        }
-                    /**
-         * Checks if macro is registered.
-         *
-         * @param string $name
-         * @return bool 
-         * @static 
-         */ 
-        public static function hasMacro($name)
-        {
-                        return \Revolution\Google\Sheets\Sheets::hasMacro($name);
-        }
-                    /**
-         * Flush the existing macros.
-         *
-         * @return void 
-         * @static 
-         */ 
-        public static function flushMacros()
-        {
-                        \Revolution\Google\Sheets\Sheets::flushMacros();
-        }
-                    /**
-         * Dynamically handle calls to the class.
-         *
-         * @param string $method
-         * @param array $parameters
-         * @return mixed 
-         * @throws \BadMethodCallException
-         * @static 
-         */ 
-        public static function macroCall($method, $parameters)
-        {
-                        /** @var \Revolution\Google\Sheets\Sheets $instance */
-                        return $instance->macroCall($method, $parameters);
+                        /** @var \Laracasts\Utilities\JavaScript\Transformers\Transformer $instance */
+                        return $instance->constructJavaScript($variables);
         }
          
     }
@@ -18369,56 +17550,38 @@
      
 }
 
-    namespace Illuminate\Routing { 
+    namespace Illuminate\Database\Schema { 
             /**
      * 
      *
-     * @mixin \Illuminate\Routing\RouteRegistrar
      */ 
-        class Router {
+        class Blueprint {
                     /**
          * 
          *
-         * @see \Laravel\Ui\AuthRouteMethods::auth()
-         * @param mixed $options
+         * @see \Kalnoy\Nestedset\NestedSetServiceProvider::register()
          * @static 
          */ 
-        public static function auth($options = [])
+        public static function nestedSet()
         {
-                        return \Illuminate\Routing\Router::auth($options);
+                        return \Illuminate\Database\Schema\Blueprint::nestedSet();
         }
                     /**
          * 
          *
-         * @see \Laravel\Ui\AuthRouteMethods::resetPassword()
+         * @see \Kalnoy\Nestedset\NestedSetServiceProvider::register()
          * @static 
          */ 
-        public static function resetPassword()
+        public static function dropNestedSet()
         {
-                        return \Illuminate\Routing\Router::resetPassword();
-        }
-                    /**
-         * 
-         *
-         * @see \Laravel\Ui\AuthRouteMethods::confirmPassword()
-         * @static 
-         */ 
-        public static function confirmPassword()
-        {
-                        return \Illuminate\Routing\Router::confirmPassword();
-        }
-                    /**
-         * 
-         *
-         * @see \Laravel\Ui\AuthRouteMethods::emailVerification()
-         * @static 
-         */ 
-        public static function emailVerification()
-        {
-                        return \Illuminate\Routing\Router::emailVerification();
+                        return \Illuminate\Database\Schema\Blueprint::dropNestedSet();
         }
          
     }
+     
+}
+
+    namespace Illuminate\Routing { 
             /**
      * 
      *
@@ -21927,11 +21090,11 @@ namespace  {
             class Validator extends \Illuminate\Support\Facades\Validator {}
             class View extends \Illuminate\Support\Facades\View {}
             class Form extends \Collective\Html\FormFacade {}
-            class HTML extends \Collective\Html\HtmlFacade {}
-            class Breadcrumbs extends \DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs {}
-            class Flare extends \Facade\Ignition\Facades\Flare {}
             class Html extends \Collective\Html\HtmlFacade {}
-            class Sheets extends \Revolution\Google\Sheets\Facades\Sheets {}
+            class Image extends \Intervention\Image\Facades\Image {}
+            class Breadcrumbs extends \Diglactic\Breadcrumbs\Breadcrumbs {}
+            class Flare extends \Facade\Ignition\Facades\Flare {}
+            class JavaScript extends \Laracasts\Utilities\JavaScript\JavaScriptFacade {}
      
 }
 

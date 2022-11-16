@@ -1,16 +1,36 @@
 <?php
+
 return [
-
-    'admin' => [
-        'name' => 'admin',
-        'email' => 'admin@admin.com',
-        'phone' => '012345678',
-        'pass' => '123456'
-
+    /*
+     *  Quyền quản trị hệ thống mặc định
+     *  Không thay đổi
+     *
+     *  admin => quản trị toàn hệ thống,
+     *  staff => nhân viên trong hệ thống,
+     *  financial => quản trị tài chính
+     *  user => người mua hàng
+     *
+     *
+     */
+    'roles' => [
+        'admin' => 'Admin',
+        'staff' => 'Staff',
+        'financial' => 'Financial',
+        'user' => 'User'
     ],
 
-    'roles' => ['admin', 'staff', 'user'],
+    'permissions' => [
+        'post_product' => 'Đăng sản phẩm',
+        'view_report' => 'Xem báo cáo',
+    ],
 
-
-    'post_spreadsheet_id' => env('POST_SPREADSHEET_ID')
+    /*
+     * Admin mặc định khi chạy seed
+     * Quản trị toàn hệ thông
+     */
+    'admin' => [
+        'email' => 'admin@admin.com',
+        'pass' => '123456'
+    ]
 ];
+

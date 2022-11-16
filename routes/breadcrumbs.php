@@ -1,42 +1,84 @@
-<?php
-//admin
-use DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs;
+<?php // routes/breadcrumbs.php
 
-Breadcrumbs::for('dashboard', function ($trail) {
+// Note: Laravel will automatically resolve `Breadcrumbs::` without
+// this import. This is nice for IDE syntax and refactoring.
+use Diglactic\Breadcrumbs\Breadcrumbs;
+
+// This import is also not required, and you could replace `BreadcrumbTrail $trail`
+//  with `$trail`. This is nice for IDE type checking and completion.
+use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
+
+
+Breadcrumbs::for('dashboard', function (BreadcrumbTrail $trail){
     $trail->push('Dashboard', route('admin.dashboard'));
 });
 
-Breadcrumbs::for('admin.user', function ($trail) {
+Breadcrumbs::for('user', function (BreadcrumbTrail $trail){
     $trail->parent('dashboard');
-    $trail->push('Quản lý khách hàng', route('admin.user'));
+    $trail->push('Danh sách user', route('admin.user'));
 });
 
-Breadcrumbs::for('admin.user.edit', function ($trail) {
-    $trail->parent('admin.user');
-    $trail->push('Chỉnh sửa thông tin khách hàng');
+Breadcrumbs::for('user.edit', function (BreadcrumbTrail $trail){
+    $trail->parent('user');
+    $trail->push('Chỉnh sửa thông tin');
 });
 
-Breadcrumbs::for('admin.category', function ($trail) {
+Breadcrumbs::for('role', function (BreadcrumbTrail $trail){
     $trail->parent('dashboard');
-    $trail->push('Danh sách danh mục', route('admin.category'));
+    $trail->push('Quản lý quyền');
 });
 
-Breadcrumbs::for('admin.category.create', function ($trail) {
-    $trail->parent('admin.category');
-    $trail->push('Thêm danh mục', route('admin.category.create'));
-});
-
-Breadcrumbs::for('admin.category.edit', function ($trail) {
-    $trail->parent('admin.category');
-    $trail->push('Chỉnh sửa danh mục');
-});
-
-Breadcrumbs::for('admin.category.page', function ($trail){
-    $trail->parent('admin.category');
-    $trail->push('Cấu hình nội dung hiển thị');
-});
-Breadcrumbs::for('admin.config', function ($trail){
+Breadcrumbs::for('category', function (BreadcrumbTrail $trail){
     $trail->parent('dashboard');
-    $trail->push('Cấu hình hệ thống');
+    $trail->push('Quản lý danh mục', route('admin.category'));
 });
 
+Breadcrumbs::for('category.add', function (BreadcrumbTrail $trail){
+    $trail->parent('category');
+    $trail->push('Thêm danh mục', route('admin.category.add'));
+});
+
+Breadcrumbs::for('product', function (BreadcrumbTrail $trail){
+    $trail->parent('dashboard');
+    $trail->push('Sản phẩm', route('admin.product'));
+});
+
+Breadcrumbs::for('product.add', function (BreadcrumbTrail $trail){
+    $trail->parent('product');
+    $trail->push('Thêm sản phẩm');
+});
+
+Breadcrumbs::for('brand', function (BreadcrumbTrail $trail){
+    $trail->parent('dashboard');
+    $trail->push('Quản lý thương hiệu', route('admin.brand'));
+});
+
+Breadcrumbs::for('brand.add', function (BreadcrumbTrail $trail){
+    $trail->parent('brand');
+    $trail->push('Thêm thương hiệu');
+});
+
+Breadcrumbs::for('condition', function (BreadcrumbTrail $trail){
+    $trail->parent('dashboard');
+    $trail->push('Quản lý tình trạng', route('admin.condition'));
+});
+
+Breadcrumbs::for('condition.add', function (BreadcrumbTrail $trail){
+    $trail->parent('condition');
+    $trail->push('Thêm tình trạng');
+});
+
+Breadcrumbs::for('tag', function (BreadcrumbTrail $trail){
+    $trail->parent('dashboard');
+    $trail->push('Quản lý nhãn', route('admin.tag'));
+});
+
+Breadcrumbs::for('tag.add', function (BreadcrumbTrail $trail){
+    $trail->parent('tag');
+    $trail->push('Thêm nhãn');
+});
+
+Breadcrumbs::for('order', function (BreadcrumbTrail $trail){
+    $trail->parent('dashboard');
+    $trail->push('Danh sách đặt hàng', route('admin.order'));
+});
