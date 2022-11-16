@@ -2,7 +2,14 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Core\ClientGoogleSheet;
+use App\Models\Category;
+use Google_Client;
+
 use Illuminate\Http\Request;
+use Revolution\Google\Sheets\Facades\Sheets;
+
 
 class HomeController extends Controller
 {
@@ -13,7 +20,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+
     }
 
     /**
@@ -23,6 +30,22 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+
+        return view('client.home');
+    }
+
+    public function category($slug)
+    {
+        $category = Category::whereStatus(Category::STATUS_ACTIVE)
+            ->where('slug', $slug)
+            ->firstOrFail();
+
+
+        return view('client.category', compact('category'));
+    }
+
+    public function oauth()
+    {
+
     }
 }

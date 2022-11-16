@@ -19,6 +19,7 @@
                             <th class="text-nowrap">Tên danh mục</th>
                             <th class="text-nowrap">Thứ tự</th>
                             <th class="text-nowrap">Trạng thái</th>
+                            <th class="text-nowrap">Cấu hình nội dung</th>
                             <th style="width: 8%">Action</th>
                         </tr>
                         </thead>
@@ -28,7 +29,9 @@
                             <td class="text-nowrap">{{$category->title}}</td>
                             <td class="text-nowrap">{{$category->index}}</td>
                             <td class="text-nowrap">{!!  $category->htmlStatus() !!}</td>
+                            <td class="text-nowrap">{!! $category->htmlPageConfig() !!}</td>
                             <td class="text-nowrap">
+                                <a href="{{$category->linkConfigPage()}}" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Cấu hình nội dung"><i class="far fa-cogs"></i></a>
                                 <a href="{{$category->linkEdit()}}" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Chỉnh sửa"><i class="fas fa-pen"></i></a>
                                 <a href="{{$category->linkDelete()}}" class="btn btn-danger btn-xs" onclick="return confirm(`Bạn có chắc chắn muốn danh mục {{$category->title}} không?`);" data-toggle="tooltip" data-placement="top" title="Xóa"><i class="fas fa-trash"></i></a>
                             </td>
@@ -38,7 +41,9 @@
                                     <td class="text-nowrap"><span class=" ml-2">-- {{$child->title}}</span></td>
                                     <td class="text-nowrap">{{$child->index}}</td>
                                     <td class="text-nowrap">{!!  $child->htmlStatus() !!}</td>
+                                    <td class="text-nowrap">{!! $child->htmlPageConfig() !!}</td>
                                     <td class="text-nowrap">
+                                        <a href="{{$child->linkConfigPage()}}" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Cấu hình nội dung"><i class="far fa-cogs"></i></a>
                                         <a href="{{$child->linkEdit()}}" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Chỉnh sửa"><i class="fas fa-pen"></i></a>
                                         <a href="{{$child->linkDelete()}}" class="btn btn-danger btn-xs" onclick="return confirm(`Bạn có chắc chắn muốn danh mục {{$child->title}} không?`);" data-toggle="tooltip" data-placement="top" title="Xóa"><i class="fas fa-trash"></i></a>
                                     </td>

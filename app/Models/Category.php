@@ -27,6 +27,19 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Category whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Category whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property string $slug
+ * @property-read \Illuminate\Database\Eloquent\Collection|Category[] $children
+ * @property-read int|null $children_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Category findSimilarSlugs(string $attribute, array $config, string $slug)
+ * @method static \Illuminate\Database\Eloquent\Builder|Category whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Category withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
+ * @property string|null $seo_title
+ * @property string|null $seo_keywords
+ * @property string|null $seo_description
+ * @property-read \App\Models\PageOfCategory|null $page
+ * @method static \Illuminate\Database\Eloquent\Builder|Category whereSeoDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Category whereSeoKeywords($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Category whereSeoTitle($value)
  */
 class Category extends Model
 {
@@ -48,12 +61,26 @@ class Category extends Model
         ];
     }
 
-    public function children()
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function children(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Category::class, 'parent_id')->orderBy('index');
     }
 
-    public function htmlStatus()
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function page(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(PageOfCategory::class, 'category_id');
+    }
+
+    /**
+     * @return string
+     */
+    public function htmlStatus(): string
     {
         if($this->status == self::STATUS_ACTIVE) {
             return "<span class='text-success font-weight-bold'>Hiển thị</span>";
@@ -62,12 +89,32 @@ class Category extends Model
         return "<span class='text-secondary'>Tạm ẩn</span>";
     }
 
-    public function linkEdit()
+    public function linkEdit(): string
     {
         return route('admin.category.edit', ['id' => $this->id]);
     }
-    public function linkDelete()
+
+    public function linkDelete(): string
     {
         return route('admin.category.delete', ['id' => $this->id]);
+    }
+
+    public function linkConfigPage(): string
+    {
+        return route('admin.category.configPage', ['id' => $this->id]);
+    }
+
+    public function htmlPageConfig(): string
+    {
+        if($this->page()->first()) {
+            return "<span class='text-success'><i class='fal fa-check-circle'></i> Đã cấu hình</span>";
+        }
+
+        return  "<span class='text-danger font-weight-bold'>Chưa cấu hình</span>";
+    }
+
+    public function linkPage()
+    {
+        return route('category', ['slug' => $this->slug]);
     }
 }

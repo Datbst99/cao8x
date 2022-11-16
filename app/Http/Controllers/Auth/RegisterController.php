@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Core\ClientGoogleSheet;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
@@ -76,6 +77,19 @@ class RegisterController extends Controller
         ]);
 
         $user->assignRole('user');
+
+
+        $data = [
+            [
+                $user->name,
+                $user->phone,
+                $user->email,
+                $user->created_at->format('d/m/Y H:i:s')
+            ]
+        ];
+
+        $userSheet = new ClientGoogleSheet();
+        $userSheet->appendData($data, config('core.post_spreadsheet_id'));
 
         return $user;
     }

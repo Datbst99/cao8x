@@ -9,17 +9,21 @@
     "license": "MIT",
     "require": {
         "php": "^7.3",
+        "ext-json": "*",
         "cviebrock/eloquent-sluggable": "^8.0",
         "davejamesmiller/laravel-breadcrumbs": "5.x",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^2.0",
+        "google/apiclient": "^2.12",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.0",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^3.4",
         "laravelcollective/html": "^6.3",
+        "revolution/laravel-google-sheets": "^5.8",
         "spatie/laravel-permission": "^5.5",
-        "watson/active": "^6.0"
+        "watson/active": "^6.0",
+        "ext-curl": "*"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.12",

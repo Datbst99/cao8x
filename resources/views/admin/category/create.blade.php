@@ -23,6 +23,18 @@
                     {!! Form::select('parent_id', $categories, old('parent_id'), ['class' => 'form-control', 'placeholder' => '--Chọn danh mục cha--']) !!}
                 </div>
                 <div class="form-group">
+                    <label for="">Seo title</label>
+                    {!! Form::text('seo_title', null, ['class' => 'form-control', 'placeholder' => 'Seo title']) !!}
+                </div>
+                <div class="form-group">
+                    <label for="">Seo keywords</label>
+                    {!! Form::text('seo_keywords', null, ['class' => 'form-control', 'placeholder' => 'Seo keywords']) !!}
+                </div>
+                <div class="form-group">
+                    <label for="">Seo description</label>
+                    {!! Form::text('seo_description', null, ['class' => 'form-control', 'placeholder' => 'Seo description']) !!}
+                </div>
+                <div class="form-group">
                     <label for="">Hiển thị danh mục</label>
                     {!! Form::select('status', [1 => 'Hiển thị', 2 => 'Tạm ẩn'], old('status'), ['class' => 'form-control']) !!}
                 </div>

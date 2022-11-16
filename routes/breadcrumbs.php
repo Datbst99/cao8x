@@ -30,3 +30,13 @@ Breadcrumbs::for('admin.category.edit', function ($trail) {
     $trail->parent('admin.category');
     $trail->push('Chỉnh sửa danh mục');
 });
+
+Breadcrumbs::for('admin.category.page', function ($trail){
+    $trail->parent('admin.category');
+    $trail->push('Cấu hình nội dung hiển thị');
+});
+Breadcrumbs::for('admin.config', function ($trail){
+    $trail->parent('dashboard');
+    $trail->push('Cấu hình hệ thống');
+});
+

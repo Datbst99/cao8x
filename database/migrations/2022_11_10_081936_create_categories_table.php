@@ -20,6 +20,9 @@ class CreateCategoriesTable extends Migration
             $table->integer('index')->nullable();
             $table->tinyInteger('status')->default(1);
             $table->unsignedBigInteger('parent_id')->nullable();
+            $table->string('seo_title')->nullable();
+            $table->string('seo_keywords')->nullable();
+            $table->string('seo_description')->nullable();
             $table->timestamps();
 
             $table->index('status');

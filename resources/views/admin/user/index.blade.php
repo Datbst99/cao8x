@@ -33,7 +33,7 @@
                                 <td class="text-nowrap">{!! $user->htmlStatus() !!}</td>
                                 <td class="text-nowrap">
                                     <a href="{{$user->linkEdit()}}" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Chỉnh sửa"><i class="fas fa-pen"></i></a>
-                                    <a href="{{$user->linkDelete()}}" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Xóa"><i class="fas fa-trash"></i></a>
+{{--                                    <a href="{{$user->linkDelete()}}" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Xóa"><i class="fas fa-trash"></i></a>--}}
                                 </td>
                             </tr>
 

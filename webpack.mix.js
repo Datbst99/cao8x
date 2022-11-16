@@ -19,9 +19,15 @@ const mix = require('laravel-mix');
 
 mix.copy('resources/assets/plugins', 'public/assets/plugins')
 
+//Client
+mix.copy('resources/assets/client/images', 'public/client/images')
+    .copy('resources/assets/client/fonts', 'public/client/fonts')
+    .copy('resources/assets/client/css', 'public/client/css')
+
 
 // admin
 mix.js('resources/assets/admin/js/lte3x.js', 'public/assets/admin/js')
+    .js('resources/assets/admin/js/edit-tor.js', 'public/assets/admin/js')
 
 mix.sass('resources/assets/admin/sass/lte3x.scss', 'public/assets/admin/css')
     .sass('resources/assets/admin/sass/main.scss', 'public/assets/admin/css')
