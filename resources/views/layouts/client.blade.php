@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Document</title>
+    <title>Biyoki.com</title>
     <link rel="stylesheet" href="/client/css/lightgallery.min.css">
     <link rel="stylesheet" href="/client/css/animate.css">
     @yield('plugins-style')
@@ -28,8 +28,6 @@
 <?php
 $bannerLeft  = \App\Models\ConfigSystem::where('key', \App\Models\ConfigSystem::BANNER_LEFT)->first();
 $bannerRight  = \App\Models\ConfigSystem::where('key', \App\Models\ConfigSystem::BANNER_RIGHT)->first();
-$bannerModal  = \App\Models\ConfigSystem::where('key', \App\Models\ConfigSystem::BANNER_MODAL)->first();
-
 ?>
 @if($bannerLeft && $bannerLeft->value)
     <div class="banner-left">
@@ -57,30 +55,10 @@ $bannerModal  = \App\Models\ConfigSystem::where('key', \App\Models\ConfigSystem:
     @include('client.includes._footer')
 </div>
 
-<?php
-    $showModal = Cookie::get('modal');
 
-    if(!$showModal) {
-        Cookie::queue('modal', 'show', 1);
-    }
-?>
+@yield('modal')
 
-@if(!$showModal && $bannerModal && $bannerModal->value)
-    <div>
-        <input class="modal-state d-none" id="modal-1" type="checkbox" checked />
-        <div class="modal">
-            <label class="modal__bg" for="modal-1"></label>
-            <div class="modal__inner">
-                <label class="modal__close" for="modal-1"></label>
-                <div class="banner-modal">
-                    <a href="{{$bannerModal->link}}">
-                        <img src="{{$bannerModal->value}}" alt="{{$bannerModal->title}}">
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-@endif
+
 
 
 

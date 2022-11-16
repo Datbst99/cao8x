@@ -43,5 +43,10 @@
                 </div>
             </div>
         </div>
+
+
+        <div >
+            {{$users->links()}}
+        </div>
     </div>
 @endsection
