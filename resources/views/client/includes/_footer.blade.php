@@ -21,7 +21,7 @@
                                                         <div class="col-inner text-left">
                                                             <div class="img has-hover x md-x lg-x y md-y lg-y" id="image_71729310">
                                                                 <div class="img-inner dark">
-                                                                    <img width="404" height="280" src="/client/images/logo-cao.png" class="attachment-large size-large" alt srcset="/client/images/logo-cao.png 404w, /client/images/logo-cao-300x208.png 300w" sizes="(max-width: 404px) 100vw, 404px">
+                                                                    <img style="height: 140px; width: auto" src="/client/images/logo-cao-2.png" class="attachment-large size-large" alt >
                                                                 </div>
                                                             </div>
                                                             <div class="searchform-wrapper ux-search-box relative hide-for-small form-flat is-small"><form method="get" class="searchform" action="https://caokidsplay.com/en/" role="search">

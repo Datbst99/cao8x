@@ -57,8 +57,8 @@
                 <div id="logo" class="flex-col logo">
                     <!-- Header logo -->
                     <a href="/" title="Cáo Kidsplay Solutions" rel="home">
-                        <img width="133" height="90" src="/client/images/logo-cao.png" class="header_logo header-logo" alt="Cáo Kidsplay Solutions">
-                        <img width="133" height="90" src="/client/images/logo-cao.png" class="header-logo-dark" alt="Cáo Kidsplay Solutions"></a>
+                        <img width="133" height="90" src="/client/images/logo-cao-2.png" class="header_logo header-logo" alt="Cáo Kidsplay Solutions">
+                        <img width="133" height="90" src="/client/images/logo-cao-2.png" class="header-logo-dark" alt="Cáo Kidsplay Solutions"></a>
                 </div>
                 <!-- Mobile Left Elements -->
                 <div class="flex-col show-for-medium flex-left">
@@ -92,6 +92,11 @@
                                     $categories = \App\Models\Category::whereNull('parent_id')->where('status', \App\Models\Category::STATUS_ACTIVE)->orderBy('index')->get()
                                 ?>
                                 @foreach($categories as $category)
+                                    @if($loop->last)
+                                            <li class="mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-237">
+                                                <a class="mega-menu-link" href="{{route('book')}}">Đặt lịch</a>
+                                            </li>
+                                    @endif
                                     <li class="mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-has-children mega-align-bottom-left mega-menu-flyout mega-menu-item-44">
                                         <a class="mega-menu-link" href="{{$category->linkPage()}}" aria-haspopup="true" aria-expanded="false" tabindex="0">
                                             {{$category->title}} @if(count($category->children)) <span class="mega-indicator"></span> @endif
@@ -106,6 +111,7 @@
                                             </ul>
                                         @endif
                                 </li>
+
                                 @endforeach
                             </ul>
                         </div>

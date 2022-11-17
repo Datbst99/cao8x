@@ -61,6 +61,14 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{route('admin.book')}}" class="nav-link {{ active(['admin.book']) }}">
+                        <i class="fal fa-clipboard-list-check"></i>
+                        <p>
+                            Danh sách đặt lịch
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

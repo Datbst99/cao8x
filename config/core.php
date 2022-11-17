@@ -12,5 +12,6 @@ return [
     'roles' => ['admin', 'staff', 'user'],
 
 
-    'post_spreadsheet_id' => env('POST_SPREADSHEET_ID')
+    'spreadsheet_user_id' => env('SPREADSHEET_USER_ID'),
+    'spreadsheet_book_id' => env('SPREADSHEET_BOOK_ID')
 ];

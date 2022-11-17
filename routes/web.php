@@ -6,6 +6,7 @@ use \App\Http\Controllers\Admin\CategoryController;
 use \App\Http\Controllers\Admin\UserController;
 use \App\Http\Controllers\Admin\PageController;
 use \App\Http\Controllers\Admin\ConfigController;
+use \App\Http\Controllers\Admin\BookController;
 use App\Http\Controllers\HomeController;
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +21,7 @@ use App\Http\Controllers\HomeController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/c/{slug}', [HomeController::class, 'category'])->name('category');
-
+Route::match(['post', 'get'], '/dat-lich', [HomeController::class, 'book'])->name('book');
 Auth::routes();
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -51,6 +52,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], func
         Route::post('/link', [ConfigController::class, 'link'])->name('admin.config.link');
         Route::post('/delete', [ConfigController::class, 'delete'])->name('admin.config.delete');
     });
+
+    Route::group(['prefix' => 'book'], function (){
+        Route::get('/', [BookController::class, 'index'])->name('admin.book');
+    });
+
 });
 
 Route::get('oauth', ['as' => 'oauthCallback', 'uses' => 'HomeController@oauth']);

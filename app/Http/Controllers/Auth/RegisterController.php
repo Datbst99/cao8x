@@ -89,7 +89,7 @@ class RegisterController extends Controller
         ];
 
         $userSheet = new ClientGoogleSheet();
-        $userSheet->appendData($data, config('core.post_spreadsheet_id'));
+        $userSheet->appendData($data, config('core.spreadsheet_user_id'));
 
         return $user;
     }

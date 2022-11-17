@@ -164,6 +164,7 @@ return [
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         Watson\Active\ActiveServiceProvider::class,
+        Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
         /*
          * Package Service Providers...
          */
@@ -231,6 +232,7 @@ return [
         'Form'      => Collective\Html\FormFacade::class,
         'HTML'      => Collective\Html\HtmlFacade::class,
         'Active' => Watson\Active\Facades\Active::class,
+        'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
     ],
 
 ];

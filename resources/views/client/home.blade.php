@@ -257,7 +257,7 @@
 
     @if(!$showModal && $bannerModal && $bannerModal->value)
         <div>
-            <input class="modal-state d-none" id="modal-1" type="checkbox" checked />
+            <input class="modal-state " style="display: none" id="modal-1" type="checkbox" checked />
             <div class="modal">
                 <label class="modal__bg" for="modal-1"></label>
                 <div class="modal__inner">

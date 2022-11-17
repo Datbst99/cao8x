@@ -40,3 +40,7 @@ Breadcrumbs::for('admin.config', function ($trail){
     $trail->push('Cấu hình hệ thống');
 });
 
+Breadcrumbs::for('admin.book', function ($trail){
+    $trail->parent('dashboard');
+    $trail->push('Danh sách đặt lịch');
+});

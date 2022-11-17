@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Biyoki.com</title>
+    {!! SEO::generate() !!}
     <link rel="stylesheet" href="/client/css/lightgallery.min.css">
     <link rel="stylesheet" href="/client/css/animate.css">
     @yield('plugins-style')
@@ -93,8 +93,8 @@ $bannerRight  = \App\Models\ConfigSystem::where('key', \App\Models\ConfigSystem:
             var sizeContainer = $('#wrapper').width()
             var sizeBannerLeft = elementLeft.width() + 1
             var sizeBannerRight = elementRight.width() + 1
-            var positionLeft = (sizeFullScreen - sizeContainer) / 2 - sizeBannerLeft
-            var positionRight = (sizeFullScreen - sizeContainer) / 2 - sizeBannerRight
+            var positionLeft = ((sizeFullScreen - sizeContainer) / 2 - sizeBannerLeft) / 2
+            var positionRight = ((sizeFullScreen - sizeContainer) / 2 - sizeBannerRight) / 2
 
             elementLeft.css('left', positionLeft + 'px')
             elementRight.css('right', positionRight + 'px')
@@ -114,8 +114,8 @@ $bannerRight  = \App\Models\ConfigSystem::where('key', \App\Models\ConfigSystem:
                 var sizeContainer = $('#wrapper').width()
                 var sizeBannerLeft = elementLeft.width() + 1
                 var sizeBannerRight = elementRight.width() + 1
-                var positionLeft = (sizeFullScreen - sizeContainer) / 2 - sizeBannerLeft
-                var positionRight = (sizeFullScreen - sizeContainer) / 2 - sizeBannerRight
+                var positionLeft = ((sizeFullScreen - sizeContainer) / 2 - sizeBannerLeft) / 2
+                var positionRight = ((sizeFullScreen - sizeContainer) / 2 - sizeBannerRight) / 2
 
                 elementLeft.css('left', positionLeft + 'px')
                 elementRight.css('right', positionRight + 'px')

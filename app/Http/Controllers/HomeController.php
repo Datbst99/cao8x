@@ -4,11 +4,10 @@ namespace App\Http\Controllers;
 
 
 use App\Core\ClientGoogleSheet;
+use App\Models\Book;
+use Artesaos\SEOTools\Facades\SEOTools;
 use App\Models\Category;
-use Google_Client;
-
 use Illuminate\Http\Request;
-use Revolution\Google\Sheets\Facades\Sheets;
 
 
 class HomeController extends Controller
@@ -30,22 +29,61 @@ class HomeController extends Controller
      */
     public function index()
     {
-
+        SEOTools::setTitle('Trang chủ');
+        SEOTools::setDescription('Trang chủ');
+        SEOTools::setCanonical('https://biyoki.com');
         return view('client.home');
     }
 
     public function category($slug)
     {
+
         $category = Category::whereStatus(Category::STATUS_ACTIVE)
             ->where('slug', $slug)
             ->firstOrFail();
 
 
+        SEOTools::setTitle($category->seo_title);
+        SEOTools::setDescription($category->seo_description);
+        SEOTools::setCanonical('https://biyoki.com');
         return view('client.category', compact('category'));
     }
 
-    public function oauth()
+    public function book(Request $request)
     {
+        if($request->isMethod('post')) {
+            $request->validate([
+                'name' => 'required',
+                'phone' => 'required', 'numeric',
+                'time' => 'required'
+            ], [
+                'time.required' => 'Vui lòng nhập thời gian'
+            ]);
 
+            $book = Book::create([
+               'name' => $request->get('name'),
+               'phone' => $request->get('phone'),
+               'time' => $request->get('time'),
+               'num_of_user' => $request->get('numberUser'),
+            ]);
+
+            $data = [
+                [
+                    $book->name,
+                    $book->phone,
+                    $book->time->format('d/m/Y H:i:s'),
+                    $book->num_of_user
+                ]
+            ];
+
+            $userSheet = new ClientGoogleSheet();
+            $userSheet->appendData($data, config('core.spreadsheet_book_id'));
+
+            return redirect()->back()->with('success', 'Đặt lịch thành công');
+        }
+        SEOTools::setTitle('Đặt lịch');
+        SEOTools::setDescription('Book lịch');
+        SEOTools::setCanonical('https://biyoki.com');
+        return view('client.book');
     }
 }

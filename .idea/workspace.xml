@@ -27,17 +27,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f62aa736-9723-4fe9-bb88-01342d824409" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/cao8x.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/laravel-plugin.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/watcherTasks.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/ConfigSystem.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ConfigSystem.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/client/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -201,7 +191,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../gitiho6x" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
@@ -246,6 +236,9 @@
       <workItem from="1668693285882" duration="918000" />
       <workItem from="1668695281406" duration="22000" />
       <workItem from="1668695335181" duration="180000" />
+      <workItem from="1668697568545" duration="37000" />
+      <workItem from="1668697673843" duration="16000" />
+      <workItem from="1668698039454" duration="50000" />
     </task>
     <servers />
   </component>
@@ -281,11 +274,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1668524873380" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1668695408319">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1668698087597">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1668590560146" />
-    <state x="740" y="275" key="FileChooserDialogImpl/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1668695408319" />
+    <state x="740" y="275" key="FileChooserDialogImpl/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1668698087597" />
     <state x="154" y="172" key="MergeDialog" timestamp="1668592534814">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
