@@ -1,0 +1,86 @@
+$main-color: #fad3aa;
+$text-main-color: #888;
+
+.btn-default {
+    color: #fff;
+    background: linear-gradient( 180deg , rgba(250,241,213,1) 0%, rgba(249,211,172,1) 35%, rgba(249,211,172,1) 100%);
+    border-color:$main-color;
+    box-shadow: none;
+}
+
+.btn-xs {
+    padding: 0.2rem 0.4rem;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 0.2rem;
+}
+
+.text-main-color {
+    color: $text-main-color;
+}
+
+.item-config {
+    margin-right: 20px;
+    margin-bottom: 16px;
+    .title {
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 15px;
+        color: #6c757d;
+    }
+    .banner {
+        width: 200px;
+        height: 400px;
+    }
+
+    .push-item {
+        border: 4px dashed #4b545c;
+        cursor: pointer;
+        position: relative;
+        .action {
+            position: absolute;
+            bottom: 0;
+            z-index: 10;
+            background-color:rgba(17, 17, 17, 0.4);;
+            width: 100%;
+            text-align: center;
+            color: #ffffff;
+            padding: 8px 0;
+            display: none;
+            font-weight: 500;
+            justify-content: center;
+            cursor: auto;
+        }
+        .deleteFile, .add-link {
+            cursor: pointer;
+
+        }
+        &:hover {
+            .action {
+                display: flex;
+            }
+        }
+    }
+
+    .text-banner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+        font-weight: 700;
+        color: #6c757d;
+    }
+
+    .banner-modal {
+        width: 350px;
+        height: 350px;
+    }
+    .image-banner {
+        width: 100%;
+    }
+    .wp-push {
+        display: none;
+        z-index: 10;
+    }
+}
+
