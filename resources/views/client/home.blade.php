@@ -251,7 +251,7 @@
     $showModal = Cookie::get('modal');
 
     if(!$showModal) {
-        Cookie::queue('modal', 'show', 1);
+        Cookie::queue('modal', 'show',  20);
     }
     ?>
 
