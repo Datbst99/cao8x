@@ -1,7 +1,7 @@
 {
-    "/js/app.js": "/js/app.js",
-    "/assets/admin/js/main.js": "/assets/admin/js/main.js",
-    "/assets/admin/js/confirm.js": "/assets/admin/js/confirm.js",
-    "/assets/auth/auth.css": "/assets/auth/auth.css",
-    "/assets/admin/app.css": "/assets/admin/app.css"
+    "/assets/admin/js/edit-tor.js": "/assets/admin/js/edit-tor.js",
+    "/assets/admin/js/lte3x.js": "/assets/admin/js/lte3x.js",
+    "/assets/admin/css/lte3x.css": "/assets/admin/css/lte3x.css",
+    "/assets/admin/css/main.css": "/assets/admin/css/main.css",
+    "/assets/admin/css/auth.css": "/assets/admin/css/auth.css"
 }

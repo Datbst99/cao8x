@@ -1,0 +1,13 @@
+$main-color: #fad3aa;
+$text-main-color: #888;
+
+.btn-default {
+    color: $text-main-color;
+    background: #f9d3ac;
+    border-color:$main-color;
+    box-shadow: none;
+}
+
+.text-main-color {
+    color: $text-main-color;
+}

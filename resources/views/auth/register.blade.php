@@ -1,68 +1,90 @@
-@extends('layouts.guest')
+@extends('layouts.auth')
+
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-6 text-center">
-                <a href="/">
-                    <img src="assets/images/zodin_pink.png" alt="Trang chủ">
-                </a>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-10">
-                <div class="wrap d-md-flex">
-                    <div class="text-wrap p-4 p-lg-5 text-center d-flex align-items-center order-md-last">
-                        <div class="text w-100">
-                            <h2>Chào mừng bạn tới với trang đăng ký</h2>
-                            <p>Nếu bạn đã có tài khoản?</p>
-                            <a href="{{route('login')}}" class="btn btn-white btn-outline-white">Đăng nhập ngay</a>
+    <div class="login-logo">
+        <b class="text-main-color">Đăng ký</b>
+    </div>
+    <!-- /.login-logo -->
+    <div class="card">
+        <div class="card-body login-card-body">
+            <form method="POST" action="{{ route('register') }}">
+                @csrf
+
+                <div class="input-group mb-3">
+                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" placeholder="Tên đăng nhập" required autocomplete="name" autofocus>
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-user"></span>
                         </div>
                     </div>
-                    <div class="login-wrap p-4 p-lg-5">
-                        <div class="d-flex">
-                            <div class="w-100">
-                                <h3 class="mb-4">Đăng ký</h3>
-                            </div>
-                            <div class="w-100">
-                                <p class="social-media d-flex justify-content-end">
-                                    <a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-facebook"></span></a>
-                                    <a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-google"></span></a>
-                                </p>
-                            </div>
-                        </div>
-                        <form method="POST" action="{{ route('register') }}" class="signin-form">
-                            @csrf
-                            <div class="form-group mb-3">
-                                <label class="label" for="name">Tên đăng nhập</label>
-                                <input type="text" class="form-control" name="name" value="{{old('name')}}" placeholder="Tên đăng nhập" required>
-                            </div>
-                            <div class="form-group mb-3">
-                                <label class="label" for="email">Email</label>
-                                <input type="email" class="form-control" name="email" value="{{old('email')}}" placeholder="Email đăng nhập" required>
-                            </div>
-                            <div class="form-group mb-3">
-                                <label class="label" for="password">Mật khẩu</label>
-                                <input type="password" name="password" class="form-control" placeholder="Mật khẩu" required>
-                            </div>
-                            <div class="form-group mb-3">
-                                <label class="label" for="password_confirmation">Nhập lại mật khẩu</label>
-                                <input type="password" name="password_confirmation" class="form-control" placeholder="Nhập lại mật khẩu" required>
-                            </div>
-                            <div>
-                                @foreach ($errors->all() as $error)
-                                    <li class="text-danger mb-2">{{ $error }}</li>
-                                @endforeach
-                            </div>
-                            <div class="form-group">
-                                <button type="submit" class="form-control btn btn-primary submit px-3">Đăng ký</button>
-                            </div>
+                    @error('name')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
 
-                        </form>
+                <div class="input-group mb-3">
+                    <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" placeholder="Số điện thoại" required autocomplete="phone">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-phone"></span>
+                        </div>
+                    </div>
+                    @error('phone')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+                <div class="input-group mb-3">
+                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Email">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-envelope"></span>
+                        </div>
+                    </div>
+                    @error('email')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+                <div class="input-group mb-3">
+                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Mật khẩu" required autocomplete="new-password">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-lock"></span>
+                        </div>
+                    </div>
+                    @error('password')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+                <div class="input-group mb-3">
+                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Nhập lại mật khẩu" required autocomplete="new-password">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-lock"></span>
+                        </div>
                     </div>
                 </div>
-            </div>
+                <div class="d-flex align-items-center justify-content-between">
+                    <button type="submit" class="btn btn-default px-5">Đăng ký</button>
+                    @if (Route::has('register'))
+                        <a class="text-center" href="{{ route('login') }}">Đăng nhập</a>
+                    @endif
+                </div>
+            </form>
+
+
+
         </div>
+        <!-- /.login-card-body -->
     </div>
 
-
 @endsection
+
+

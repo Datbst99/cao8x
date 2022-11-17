@@ -13,7 +13,9 @@ use Spatie\Permission\Traits\HasRoles;
  *
  * @property int $id
  * @property string $name
- * @property string $email
+ * @property string|null $email
+ * @property string $phone
+ * @property string|null $address
  * @property \Illuminate\Support\Carbon|null $email_verified_at
  * @property string $password
  * @property string|null $remember_token
@@ -31,12 +33,14 @@ use Spatie\Permission\Traits\HasRoles;
  * @method static \Illuminate\Database\Eloquent\Builder|User permission($permissions)
  * @method static \Illuminate\Database\Eloquent\Builder|User query()
  * @method static \Illuminate\Database\Eloquent\Builder|User role($roles, $guard = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereAddress($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereEmail($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereEmailVerifiedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User wherePassword($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User wherePhone($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  * @mixin \Eloquent
@@ -47,17 +51,15 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable, HasRoles;
 
-    // user còn được truy cập hệ thống hay không
-    const ENABLE_STATUS = 1;
-    const DISABLE_STATUS = 0;
-
+    const STATUS_ACTIVE = 1;
+    const STATUS_INACTIVE = 0;
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'phone','password',
     ];
 
     /**
@@ -78,23 +80,21 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-
-    public function statusHtml()
+    public function htmlStatus()
     {
-        if($this->status == self::ENABLE_STATUS){
-            return "<span class='text-success'><i class='fas fa-circle'></i> Đang hoạt động</span>";
+        if($this->status == self::STATUS_ACTIVE) {
+            return "<span class='text-success font-weight-bold'>Đang hoạt động</span>";
         }
-        return "<span class='text-secondary'> Ngưng hoạt động</span>";
-    }
 
+        return "<span class='text-secondary'>Ngưng hoạt động</span>";
+    }
 
     public function linkEdit()
     {
         return route('admin.user.edit', ['id' => $this->id]);
     }
 
-    public function linkDelete()
-    {
+    public function linkDelete(){
         return route('admin.user.delete', ['id' => $this->id]);
     }
 }

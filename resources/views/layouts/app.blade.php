@@ -1,79 +1,83 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <link rel="stylesheet" href="{{mix('assets/auth/auth.css')}}">
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-<section class="ftco-section">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-6 text-center">
-                <img src="assets/images/logo_zodin.png" alt="">
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-10">
-                <div class="wrap d-md-flex">
-                    <div class="text-wrap p-4 p-lg-5 text-center d-flex align-items-center order-md-last">
-                        <div class="text w-100">
-                            <h2>Chào mừng bạn tới với trang đăng nhập</h2>
-                            <p>Bạn đã có tài khoản hay chưa?</p>
-                            <a href="#" class="btn btn-white btn-outline-white">Đăng ký ngay</a>
-                        </div>
-                    </div>
-                    <div class="login-wrap p-4 p-lg-5">
-                        <div class="d-flex">
-                            <div class="w-100">
-                                <h3 class="mb-4">Đăng nhập</h3>
-                            </div>
-                            <div class="w-100">
-                                <p class="social-media d-flex justify-content-end">
-                                    <a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-facebook"></span></a>
-                                    <a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-twitter"></span></a>
-                                </p>
-                            </div>
-                        </div>
-                        <form action="#" class="signin-form">
-                            <div class="form-group mb-3">
-                                <label class="label" for="email">Email</label>
-                                <input type="email" class="form-control" placeholder="Email đăng nhập" required>
-                            </div>
-                            <div class="form-group mb-3">
-                                <label class="label" for="password">Mật khẩu</label>
-                                <input type="password" class="form-control" placeholder="Mật khẩu" required>
-                            </div>
-                            <div class="form-group">
-                                <button type="submit" class="form-control btn btn-primary submit px-3">Sign In</button>
-                            </div>
-                            <div class="form-group d-md-flex">
-                                <div class="w-50 text-left">
-                                    <label class="checkbox-wrap checkbox-primary mb-0">Lưu đăng ký
-                                        <input type="checkbox" checked>
-                                        <span class="checkmark"></span>
-                                    </label>
+    <div id="app">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+            <div class="container">
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    {{ config('app.name', 'Laravel') }}
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <!-- Left Side Of Navbar -->
+                    <ul class="navbar-nav me-auto">
+
+                    </ul>
+
+                    <!-- Right Side Of Navbar -->
+                    <ul class="navbar-nav ms-auto">
+                        <!-- Authentication Links -->
+                        @guest
+                            @if (Route::has('login'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                </li>
+                            @endif
+
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </li>
+                            @endif
+                        @else
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }}
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
                                 </div>
-                                <div class="w-50 text-md-right">
-                                    <a href="#">Quên mật khẩu</a>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+                            </li>
+                        @endguest
+                    </ul>
                 </div>
             </div>
-        </div>
+        </nav>
+
+        <main class="py-4">
+            @yield('content')
+        </main>
     </div>
-</section>
-
-{{--<script src="js/jquery.min.js"></script>--}}
-{{--<script src="js/popper.js"></script>--}}
-{{--<script src="js/bootstrap.min.js"></script>--}}
-{{--<script src="js/main.js"></script>--}}
-
 </body>
 </html>
-

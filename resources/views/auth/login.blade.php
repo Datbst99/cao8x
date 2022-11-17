@@ -1,71 +1,83 @@
-@extends('layouts.guest')
-@section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-6 text-center">
-                <a href="/">
-                    <img src="assets/images/zodin_pink.png" alt="Trang chủ">
-                </a>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-10">
-                <div class="wrap d-md-flex">
-                    <div class="text-wrap p-4 p-lg-5 text-center d-flex align-items-center order-md-last">
-                        <div class="text w-100">
-                            <h2>Chào mừng bạn tới với trang đăng nhập</h2>
-                            <p>Bạn đã có tài khoản hay chưa?</p>
-                            <a href="{{route('register')}}" class="btn btn-white btn-outline-white">Đăng ký ngay</a>
-                        </div>
-                    </div>
-                    <div class="login-wrap p-4 p-lg-5">
+@extends('layouts.auth')
 
-                        <div class="d-flex">
-                            <div class="w-100">
-                                <h3 class="mb-4">Đăng nhập</h3>
-                            </div>
-                            <div class="w-100">
-                                <p class="social-media d-flex justify-content-end">
-                                    <a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-facebook"></span></a>
-                                    <a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-google"></span></a>
-                                </p>
-                            </div>
+@section('content')
+    <div class="login-logo">
+        <b class="text-main-color">Đăng nhập</b>
+    </div>
+    <!-- /.login-logo -->
+    <div class="card">
+        <div class="card-body login-card-body">
+            <div class="mb-2">
+                @error('phone')
+                <span class="invalid-feedback d-block" role="alert">
+                <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+                @error('password')
+                <span class="invalid-feedback d-block" role="alert">
+                <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+            </div>
+            <form method="POST" action="{{ route('login') }}">
+                @csrf
+                <div class="input-group mb-3">
+                    <input type="text" name="phone" class="form-control" placeholder="Số điện thoại" value="{{ old('phone') }}" >
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-phone"></span>
                         </div>
-                        <form method="POST" action="{{ route('login') }}" class="signin-form">
-                            @csrf
-                            <div class="form-group mb-3">
-                                <label class="label" for="email">Email</label>
-                                <input type="email" class="form-control" name="email" value="{{old('email')}}" placeholder="Email đăng nhập" required>
-                            </div>
-                            <div class="form-group mb-3">
-                                <label class="label" for="password">Mật khẩu</label>
-                                <input type="password" name="password" class="form-control" placeholder="Mật khẩu" required>
-                            </div>
-                            <div>
-                                @foreach ($errors->all() as $error)
-                                    <li class="text-danger mb-2">{{ $error }}</li>
-                                @endforeach
-                            </div>
-                            <div class="form-group">
-                                <button type="submit" class="form-control btn btn-primary submit px-3">Đăng nhập</button>
-                            </div>
-                            <div class="form-group d-md-flex">
-                                <div class="w-50 text-left">
-                                    <label class="checkbox-wrap checkbox-primary mb-0">Lưu đăng nhập
-                                        <input type="checkbox" name="remember" checked>
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </div>
-                                <div class="w-50 text-md-right">
-                                    <a href="{{ route('password.request') }}">Quên mật khẩu</a>
-                                </div>
-                            </div>
-                        </form>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
+                <div class="input-group mb-3">
+                    <input type="password" name="password" class="form-control" placeholder="Mật khẩu">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-lock"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-7">
+                        <div class="icheck-primary">
+                            <input  type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                            <label for="remember">
+                                Nhớ mật khẩu
+                            </label>
+                        </div>
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-5">
+                        <button type="submit" class="btn btn-default btn-block">Đăng nhập</button>
+                    </div>
+                    <!-- /.col -->
+                </div>
+            </form>
 
+{{--            <div class="social-auth-links text-center mb-3">--}}
+{{--                <p>- OR -</p>--}}
+{{--                <a href="#" class="btn btn-block btn-primary">--}}
+{{--                    <i class="fab fa-facebook mr-2"></i> Sign in using Facebook--}}
+{{--                </a>--}}
+{{--                <a href="#" class="btn btn-block btn-danger">--}}
+{{--                    <i class="fab fa-google-plus mr-2"></i> Sign in using Google+--}}
+{{--                </a>--}}
+{{--            </div>--}}
+{{--            <!-- /.social-auth-links -->--}}
+            <p class="mb-0">
+                @if (Route::has('register'))
+                    <a class="text-center" href="{{ route('register') }}">Đăng ký</a>
+                @endif
+            </p>
+            <p class="mb-1">
+                @if (Route::has('password.request'))
+                    <a href="{{ route('password.request') }}">
+                        Lấy lại mật khẩu
+                    </a>
+                @endif
+            </p>
+        </div>
+        <!-- /.login-card-body -->
+    </div>
 
 @endsection
