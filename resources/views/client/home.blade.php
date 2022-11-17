@@ -102,32 +102,32 @@
                                 <div class="slider-wrapper relative" id="slider-1219294819">
                                     <div class="slider slider-nav-circle slider-nav-normal slider-nav-light slider-nav-outside slider-style-normal slider-show-nav" >
                                         <div class="img has-hover x md-x lg-x y md-y lg-y" id="image_2111554492">
-                                            <a class="image-lightbox lightbox-gallery" title href="https://caokidsplay.com/wp-content/uploads/2021/11/1-6.jpg">						<div class="img-inner dark">
+                                            <a class="image-lightbox lightbox-gallery" title href="">						<div class="img-inner dark">
                                                     <img width="1000" height="1000" src="/client/images/1-6.jpg" class="attachment-original size-original" alt srcset="/client/images/1-6.jpg 1000w, /client/images/1-6-150x150.jpg 150w, /client/images/1-6-300x300.jpg 300w, /client/images/1-6-768x768.jpg 768w" sizes="(max-width: 1000px) 100vw, 1000px">
                                                 </div>
                                             </a>
                                         </div>
                                         <div class="img has-hover x md-x lg-x y md-y lg-y" id="image_7120239">
-                                            <a class="image-lightbox lightbox-gallery" title href="https://caokidsplay.com/wp-content/uploads/2021/11/2-6.jpg">						<div class="img-inner dark">
+                                            <a class="image-lightbox lightbox-gallery" title href="">						<div class="img-inner dark">
                                                     <img width="1000" height="1000" src="/client/images/2-6.jpg" class="attachment-original size-original" alt srcset="/client/images/2-6.jpg 1000w, /client/images/2-6-150x150.jpg 150w, /client/images/2-6-300x300.jpg 300w, images/2-6-768x768.jpg 768w" sizes="(max-width: 1000px) 100vw, 1000px">
                                                 </div>
                                             </a>
                                         </div>
                                         <div class="img has-hover x md-x lg-x y md-y lg-y" id="image_1412151185">
-                                            <a class="image-lightbox lightbox-gallery" title href="https://caokidsplay.com/wp-content/uploads/2021/11/3-6.jpg">						<div class="img-inner dark">
+                                            <a class="image-lightbox lightbox-gallery" title href="">						<div class="img-inner dark">
                                                     <img width="1000" height="1000" src="/client/images/3-6.jpg" class="attachment-original size-original" alt srcset="/client/images/3-6.jpg 1000w, /client/images/3-6-150x150.jpg 150w, /client/images/3-6-300x300.jpg 300w, /client/images/3-6-768x768.jpg 768w" sizes="(max-width: 1000px) 100vw, 1000px">
                                                 </div>
                                             </a>
 
                                         </div>
                                         <div class="img has-hover x md-x lg-x y md-y lg-y" id="image_2125389607">
-                                            <a class="image-lightbox lightbox-gallery" title href="https://caokidsplay.com/wp-content/uploads/2021/11/4-6.jpg">						<div class="img-inner dark">
+                                            <a class="image-lightbox lightbox-gallery" title href="">						<div class="img-inner dark">
                                                     <img width="1000" height="1000" src="/client/images/4-6.jpg" class="attachment-original size-original" alt srcset="/client/images/4-6.jpg 1000w, /client/images/4-6-150x150.jpg 150w, /client/images/4-6-300x300.jpg 300w, /client/images/4-6-768x768.jpg 768w" sizes="(max-width: 1000px) 100vw, 1000px">
                                                 </div>
                                             </a>
                                         </div>
                                         <div class="img has-hover x md-x lg-x y md-y lg-y" id="image_1033105397">
-                                            <a class="image-lightbox lightbox-gallery" title href="https://caokidsplay.com/wp-content/uploads/2021/11/5-6.jpg">						<div class="img-inner dark">
+                                            <a class="image-lightbox lightbox-gallery" title href="">						<div class="img-inner dark">
                                                     <img width="1000" height="1000" src="/client/images/5-6.jpg" class="attachment-original size-original" alt srcset="/client/images/5-6.jpg 1000w, /client/images/5-6-150x150.jpg 150w, /client/images/5-6-300x300.jpg 300w, /client/images/5-6-768x768.jpg 768w" sizes="(max-width: 1000px) 100vw, 1000px">
                                                 </div>
                                             </a>
@@ -141,56 +141,56 @@
                                 <div class="slider-wrapper relative" id="slider-996052177">
                                     <div class="slider slider-nav-circle slider-nav-normal slider-nav-light slider-nav-outside slider-style-normal slider-show-nav">
                                         <div class="img has-hover x md-x lg-x y md-y lg-y" id="image_679131203">
-                                            <a class="image-lightbox lightbox-gallery" title href="https://caokidsplay.com/wp-content/uploads/2021/11/6-6.jpg">						<div class="img-inner dark">
+                                            <a class="image-lightbox lightbox-gallery" title href="">						<div class="img-inner dark">
                                                     <img width="1000" height="1000" src="/client/images/6-6.jpg" class="attachment-original size-original" alt srcset="/client/images/6-6.jpg 1000w, /client/images/6-6-150x150.jpg 150w, /client/images/6-6-300x300.jpg 300w, /client/images/6-6-768x768.jpg 768w" sizes="(max-width: 1000px) 100vw, 1000px">
                                                 </div>
                                             </a>
                                         </div>
                                         <div class="img has-hover x md-x lg-x y md-y lg-y" id="image_114240899">
-                                            <a class="image-lightbox lightbox-gallery" title href="https://caokidsplay.com/wp-content/uploads/2021/11/7-6.jpg">						<div class="img-inner dark">
+                                            <a class="image-lightbox lightbox-gallery" title href="">						<div class="img-inner dark">
                                                     <img width="1000" height="1000" src="/client/images/7-6.jpg" class="attachment-original size-original" alt srcset="/client/images/7-6.jpg 1000w, /client/images/7-6-150x150.jpg 150w, /client/images/7-6-300x300.jpg 300w, /client/images/7-6-768x768.jpg 768w" sizes="(max-width: 1000px) 100vw, 1000px">
                                                 </div>
                                             </a>
                                         </div>
                                         <div class="img has-hover x md-x lg-x y md-y lg-y" id="image_1857839133">
-                                            <a class="image-lightbox lightbox-gallery" title href="https://caokidsplay.com/wp-content/uploads/2021/11/8-6.jpg">						<div class="img-inner dark">
+                                            <a class="image-lightbox lightbox-gallery" title href="">						<div class="img-inner dark">
                                                     <img width="1000" height="1000" src="/client/images/8-6.jpg" class="attachment-original size-original" alt srcset="/client/images/8-6.jpg 1000w, /client/images/8-6-150x150.jpg 150w, /client/images/8-6-300x300.jpg 300w, /client/images/8-6-768x768.jpg 768w" sizes="(max-width: 1000px) 100vw, 1000px">
                                                 </div>
                                             </a>
                                         </div>
                                         <div class="img has-hover x md-x lg-x y md-y lg-y" id="image_754949096">
-                                            <a class="image-lightbox lightbox-gallery" title href="https://caokidsplay.com/wp-content/uploads/2021/11/9-6.jpg">						<div class="img-inner dark">
+                                            <a class="image-lightbox lightbox-gallery" title href="">						<div class="img-inner dark">
                                                     <img width="1000" height="1000" src="/client/images/9-6.jpg" class="attachment-original size-original" alt srcset="/client/images/9-6.jpg 1000w, /client/images/9-6-150x150.jpg 150w, /client/images/9-6-300x300.jpg 300w, /client/images/9-6-768x768.jpg 768w" sizes="(max-width: 1000px) 100vw, 1000px">
                                                 </div>
                                             </a>
 
                                         </div>
                                         <div class="img has-hover x md-x lg-x y md-y lg-y" id="image_826684610">
-                                            <a class="image-lightbox lightbox-gallery" title href="https://caokidsplay.com/wp-content/uploads/2021/11/10-6.jpg">						<div class="img-inner dark">
+                                            <a class="image-lightbox lightbox-gallery" title href="">						<div class="img-inner dark">
                                                     <img width="1000" height="1000" src="/client/images/10-6.jpg" class="attachment-original size-original" alt srcset="/client/images/10-6.jpg 1000w, /client/images/10-6-150x150.jpg 150w, /client/images/10-6-300x300.jpg 300w, /client/images/10-6-768x768.jpg 768w" sizes="(max-width: 1000px) 100vw, 1000px">
                                                 </div>
                                             </a>
                                         </div>
                                         <div class="img has-hover x md-x lg-x y md-y lg-y" id="image_2103248624">
-                                            <a class="image-lightbox lightbox-gallery" title href="https://caokidsplay.com/wp-content/uploads/2021/11/11-6.jpg">						<div class="img-inner dark">
+                                            <a class="image-lightbox lightbox-gallery" title href="">						<div class="img-inner dark">
                                                     <img width="1000" height="1000" src="/client/images/11-6.jpg" class="attachment-original size-original" alt srcset="/client/images/11-6.jpg 1000w, /client/images/11-6-150x150.jpg 150w, /client/images/11-6-300x300.jpg 300w, /client/images/11-6-768x768.jpg 768w" sizes="(max-width: 1000px) 100vw, 1000px">
                                                 </div>
                                             </a>
                                         </div>
                                         <div class="img has-hover x md-x lg-x y md-y lg-y" id="image_857642744">
-                                            <a class="image-lightbox lightbox-gallery" title href="https://caokidsplay.com/wp-content/uploads/2021/11/12-6.jpg">						<div class="img-inner dark">
+                                            <a class="image-lightbox lightbox-gallery" title href="">						<div class="img-inner dark">
                                                     <img width="1000" height="1000" src="/client/images/12-6.jpg" class="attachment-original size-original" alt srcset="/client/images/12-6.jpg 1000w, /client/images/12-6-150x150.jpg 150w, /client/images/12-6-300x300.jpg 300w, /client/images/12-6-768x768.jpg 768w" sizes="(max-width: 1000px) 100vw, 1000px">
                                                 </div>
                                             </a>
                                         </div>
                                         <div class="img has-hover x md-x lg-x y md-y lg-y" id="image_1032846797">
-                                            <a class="image-lightbox lightbox-gallery" title href="https://caokidsplay.com/wp-content/uploads/2021/11/13-4.jpg">						<div class="img-inner dark">
+                                            <a class="image-lightbox lightbox-gallery" title href="">						<div class="img-inner dark">
                                                     <img width="1000" height="1000" src="/client/images/13-4.jpg" class="attachment-original size-original" alt srcset="/client/images/13-4.jpg 1000w, /client/images/13-4-150x150.jpg 150w, /client/images/13-4-300x300.jpg 300w, /client/images/13-4-768x768.jpg 768w" sizes="(max-width: 1000px) 100vw, 1000px">
                                                 </div>
                                             </a>
                                         </div>
                                         <div class="img has-hover x md-x lg-x y md-y lg-y" id="image_838772033">
-                                            <a class="image-lightbox lightbox-gallery" title href="https://caokidsplay.com/wp-content/uploads/2021/11/14-5.jpg">						<div class="img-inner dark">
+                                            <a class="image-lightbox lightbox-gallery" title href="">						<div class="img-inner dark">
                                                     <img width="1000" height="1000" src="/client/images/14-5.jpg" class="attachment-original size-original" alt srcset="/client/images/14-5.jpg 1000w, /client/images/14-5-150x150.jpg 150w, /client/images/14-5-300x300.jpg 300w, /client/images/14-5-768x768.jpg 768w" sizes="(max-width: 1000px) 100vw, 1000px">
                                                 </div>
                                             </a>
@@ -204,31 +204,31 @@
                                 <div class="slider-wrapper relative" id="slider-1376926148">
                                     <div class="slider slider-nav-circle slider-nav-normal slider-nav-light slider-nav-outside slider-style-normal slider-show-nav" >
                                         <div class="img has-hover x md-x lg-x y md-y lg-y" id="image_419084784">
-                                            <a class="image-lightbox lightbox-gallery" title href="https://caokidsplay.com/wp-content/uploads/2021/11/17-4.jpg">						<div class="img-inner dark">
+                                            <a class="image-lightbox lightbox-gallery" title href="">						<div class="img-inner dark">
                                                     <img width="1000" height="1000" src="/client/images/17-4.jpg" class="attachment-original size-original" alt srcset="/client/images/17-4.jpg 1000w, /client/images/17-4-150x150.jpg 150w, /client/images/17-4-300x300.jpg 300w, /client/images/17-4-768x768.jpg 768w" sizes="(max-width: 1000px) 100vw, 1000px">
                                                 </div>
                                             </a>
                                         </div>
                                         <div class="img has-hover x md-x lg-x y md-y lg-y" id="image_136938147">
-                                            <a class="image-lightbox lightbox-gallery" title href="https://caokidsplay.com/wp-content/uploads/2021/11/z2559964140053_09f64d9f9b65de20dcdd655c33de28b8-1.jpg">						<div class="img-inner dark">
+                                            <a class="image-lightbox lightbox-gallery" title href="">						<div class="img-inner dark">
                                                     <img width="1000" height="1000" src="/client/images/z2559964140053_09f64d9f9b65de20dcdd655c33de28b8-1.jpg" class="attachment-original size-original" alt srcset="/client/images/z2559964140053_09f64d9f9b65de20dcdd655c33de28b8-1.jpg 1000w, /client/images/z2559964140053_09f64d9f9b65de20dcdd655c33de28b8-1-150x150.jpg 150w, /client/images/z2559964140053_09f64d9f9b65de20dcdd655c33de28b8-1-300x300.jpg 300w, /client/images/z2559964140053_09f64d9f9b65de20dcdd655c33de28b8-1-768x768.jpg 768w" sizes="(max-width: 1000px) 100vw, 1000px">
                                                 </div>
                                             </a>
                                         </div>
                                         <div class="img has-hover x md-x lg-x y md-y lg-y" id="image_2045126149">
-                                            <a class="image-lightbox lightbox-gallery" title href="https://caokidsplay.com/wp-content/uploads/2021/11/z2559992941776_36842ecd3196ae0377abc4bbfe09112a.jpg">						<div class="img-inner dark">
+                                            <a class="image-lightbox lightbox-gallery" title href="">						<div class="img-inner dark">
                                                     <img width="1000" height="1000" src="/client/images/z2559992941776_36842ecd3196ae0377abc4bbfe09112a.jpg" class="attachment-original size-original" alt srcset="/client/images/z2559992941776_36842ecd3196ae0377abc4bbfe09112a.jpg 1000w, /client/images/z2559992941776_36842ecd3196ae0377abc4bbfe09112a-150x150.jpg 150w, /client/images/z2559992941776_36842ecd3196ae0377abc4bbfe09112a-300x300.jpg 300w, /client/images/z2559992941776_36842ecd3196ae0377abc4bbfe09112a-768x768.jpg 768w" sizes="(max-width: 1000px) 100vw, 1000px">
                                                 </div>
                                             </a>
                                         </div>
                                         <div class="img has-hover x md-x lg-x y md-y lg-y" id="image_1651613072">
-                                            <a class="image-lightbox lightbox-gallery" title href="https://caokidsplay.com/wp-content/uploads/2021/11/z2560021110259_564bcc105c79b664d39843dd2dd401a2.jpg">						<div class="img-inner dark">
+                                            <a class="image-lightbox lightbox-gallery" title href="">						<div class="img-inner dark">
                                                     <img width="1000" height="1000" src="/client/images/z2560021110259_564bcc105c79b664d39843dd2dd401a2.jpg" class="attachment-original size-original" alt srcset="/client/images/z2560021110259_564bcc105c79b664d39843dd2dd401a2.jpg 1000w, /client/images/z2560021110259_564bcc105c79b664d39843dd2dd401a2-150x150.jpg 150w, /client/images/z2560021110259_564bcc105c79b664d39843dd2dd401a2-300x300.jpg 300w, /client/images/z2560021110259_564bcc105c79b664d39843dd2dd401a2-768x768.jpg 768w" sizes="(max-width: 1000px) 100vw, 1000px">
                                                 </div>
                                             </a>
                                         </div>
                                         <div class="img has-hover x md-x lg-x y md-y lg-y" id="image_1226307563">
-                                            <a class="image-lightbox lightbox-gallery" title href="https://caokidsplay.com/wp-content/uploads/2021/11/z2568231797465_14bb888329719f6a8e685c1323d9328b-1.jpg">						<div class="img-inner dark">
+                                            <a class="image-lightbox lightbox-gallery" title href="">						<div class="img-inner dark">
                                                     <img width="1000" height="1000" src="/client/images/z2568231797465_14bb888329719f6a8e685c1323d9328b-1.jpg" class="attachment-original size-original" alt srcset="/client/images/z2568231797465_14bb888329719f6a8e685c1323d9328b-1.jpg 1000w, /client/images/z2568231797465_14bb888329719f6a8e685c1323d9328b-1-150x150.jpg 150w, /client/images/z2568231797465_14bb888329719f6a8e685c1323d9328b-1-300x300.jpg 300w, /client/images/z2568231797465_14bb888329719f6a8e685c1323d9328b-1-768x768.jpg 768w" sizes="(max-width: 1000px) 100vw, 1000px">
                                                 </div>
                                             </a>
@@ -244,6 +244,36 @@
 
     </main>
 @endsection
+
+@section('modal')
+    <?php
+    $bannerModal  = \App\Models\ConfigSystem::where('key', \App\Models\ConfigSystem::BANNER_MODAL)->first();
+    $showModal = Cookie::get('modal');
+
+    if(!$showModal) {
+        Cookie::queue('modal', 'show', 1);
+    }
+    ?>
+
+    @if(!$showModal && $bannerModal && $bannerModal->value)
+        <div>
+            <input class="modal-state d-none" id="modal-1" type="checkbox" checked />
+            <div class="modal">
+                <label class="modal__bg" for="modal-1"></label>
+                <div class="modal__inner">
+                    <label class="modal__close" for="modal-1"></label>
+                    <div class="banner-modal">
+                        <a href="{{$bannerModal->link}}">
+                            <img src="{{$bannerModal->value}}" alt="{{$bannerModal->title}}">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
+@endsection
+
+
 @section('plugins-script')
     <script type="text/javascript" src="/assets/plugins/slick/slick.js"></script>
 @endsection
