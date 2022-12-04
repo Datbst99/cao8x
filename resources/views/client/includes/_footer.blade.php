@@ -37,7 +37,9 @@
                                                                     <div class="live-search-results text-left z-top"></div>
                                                                 </form>
                                                             </div>
-                                                            <p><strong>CÔNG TY TNHH THƯƠNG MẠI DỊCH VỤ BIYOKI</strong></p>
+                                                            <p>
+                                                                <strong>CÔNG TY TNHH THƯƠNG MẠI DỊCH VỤ BIYOKI</strong>
+                                                            </p>
                                                             <p>MST: 0317529628</p>
                                                             <p>Địa chỉ: Số 304 Minh Phụng, Phường 2, Quận 11, Thành phố Hồ Chí Minh, Việt Nam</p>
                                                             <p>Điện thoại: <a href="tel:0964351299">0317529628</a> </p>
@@ -52,10 +54,13 @@
                                     <div id="text-box-707150535" class="text-box banner-layer chili-footer-element_mobile show-for-small x5 md-x5 lg-x5 y50 md-y50 lg-y50 res-text">
                                         <div class="text ">
                                             <div class="text-inner text-left">
-                                                <p><strong>CÔNG TY TNHH THƯƠNG MẠI DỊCH VỤ BIYOKI</strong></p>
+                                                <p>
+                                                    <strong>CÔNG TY TNHH THƯƠNG MẠI DỊCH VỤ BIYOKI</strong>
+                                                </p>
                                                 <p>MST: 0317529628</p>
-                                                <p>Trụ sở: 112/19 Nguyễn Lâm, phường 6, quận 10, TPHCM</p>
-                                                <p>Điện thoại: <a href="tel:0964351299">0964351299</a> – <a href="tel:0962445105">0962445105</a></p>
+                                                <p>Địa chỉ: Số 304 Minh Phụng, Phường 2, Quận 11, Thành phố Hồ Chí Minh, Việt Nam</p>
+                                                <p>Điện thoại: <a href="tel:0964351299">0317529628</a> </p>
+                                                <p>Gmail: <a href="">biyoki.fk@gmail.com </a></p>
                                             </div>
                                         </div>
                                     </div>
