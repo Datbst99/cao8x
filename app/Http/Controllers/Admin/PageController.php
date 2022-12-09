@@ -33,6 +33,7 @@ class PageController extends Controller
            'category_id' => $category->id,
         ], [
             'content' => $request->get('content'),
+            'path_background' => $request->get('background'),
         ]);
 
         return response()->json([

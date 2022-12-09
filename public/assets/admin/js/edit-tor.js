@@ -169,7 +169,7 @@ function handleError(error) {// console.log( error );
 watchdog.create(document.querySelector('#textareaContent'), option_editor)["catch"](handleError);
 
 window.pushData = function (id) {
-  var content = editor;
+  var content = typeof editor != "undefined" ? editor : '';
 
   var _token = $('meta[name="csrf-token"]').attr('content');
 
@@ -178,6 +178,7 @@ window.pushData = function (id) {
     method: 'post',
     data: {
       content: content,
+      background: $("input[name='background']").val(),
       _token: _token
     }
   }).done(function (res) {

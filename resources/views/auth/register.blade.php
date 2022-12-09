@@ -1,8 +1,10 @@
+@section('title', 'Đăng ký thành viên')
+
 @extends('layouts.auth')
 
 @section('content')
     <div class="login-logo">
-        <b class="text-main-color">Đăng ký</b>
+        <b class="text-main-color">Đăng ký thành viên</b>
     </div>
     <!-- /.login-logo -->
     <div class="card">
@@ -71,11 +73,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="d-flex align-items-center justify-content-between">
+                <div class="d-flex align-items-center justify-content-center">
                     <button type="submit" class="btn btn-default px-5">Đăng ký</button>
-                    @if (Route::has('register'))
-                        <a class="text-center" href="{{ route('login') }}">Đăng nhập</a>
-                    @endif
+{{--                    @if (Route::has('register'))--}}
+{{--                        <a class="text-center" href="{{ route('login') }}">Đăng nhập</a>--}}
+{{--                    @endif--}}
                 </div>
             </form>
 

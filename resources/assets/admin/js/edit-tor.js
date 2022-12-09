@@ -114,13 +114,14 @@ watchdog.create( document.querySelector('#textareaContent'), option_editor).catc
 
 
 window.pushData = function (id) {
-    let content = editor
+    let content = typeof editor != "undefined" ? editor : ''
     let _token   = $('meta[name="csrf-token"]').attr('content');
     $.ajax({
         url: `/admin/category/${id}/config/change`,
         method: 'post',
         data : {
             content,
+            background: $("input[name='background']").val(),
             _token: _token
         }
     }).done(function (res) {

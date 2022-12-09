@@ -17,10 +17,11 @@ const mix = require('laravel-mix');
 
 // general
 
-mix.copy('resources/assets/plugins', 'public/assets/plugins')
+// mix.copy('resources/assets/plugins', 'public/assets/plugins')
 
 //Client
 mix.copy('resources/assets/client/images', 'public/client/images')
+    .copy('resources/assets/client/imgs', 'public/client/imgs')
     .copy('resources/assets/client/fonts', 'public/client/fonts')
     .copy('resources/assets/client/css', 'public/client/css')
 

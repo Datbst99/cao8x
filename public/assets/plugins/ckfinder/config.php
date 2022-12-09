@@ -32,8 +32,8 @@ $config['authentication'] = function () {
 /*============================ Lice nse Key ============================================*/
 // https://ckeditor.com/docs/ckfinder/ckfinder3-php/configuration.html#configuration_options_licenseKey
 
-$config['licenseName'] = 'freetest.com';
-$config['licenseKey']  = 'WPTPKAGC7W11D85P625AYTPBHEKL3';
+$config['licenseName'] = 'devfree.com';
+$config['licenseKey']  = 'V2P2GLJFYFUWBZ9EYM9H3MD6SA5BY';
 
 /*============================ CKFinder Internal Directory ============================*/
 // https://ckeditor.com/docs/ckfinder/ckfinder3-php/configuration.html#configuration_options_privateDir

@@ -39,7 +39,7 @@
                             @foreach($category->children as $child)
                                 <tr>
                                     <td class="text-nowrap"><span class=" ml-2">-- {{$child->title}}</span></td>
-                                    <td class="text-nowrap">{{$child->index}}</td>
+                                    <td class="text-nowrap">{{$category->index .' - '. $child->index}}</td>
                                     <td class="text-nowrap">{!!  $child->htmlStatus() !!}</td>
                                     <td class="text-nowrap">{!! $child->htmlPageConfig() !!}</td>
                                     <td class="text-nowrap">

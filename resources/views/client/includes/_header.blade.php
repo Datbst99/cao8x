@@ -27,7 +27,7 @@
                                 <a href="{{route('login')}}" class="nav-top-link">Đăng nhập</a>
                             </li>
                             <li id="menu-item-344-en" class="lang-item lang-item-6 lang-item-en current-lang menu-item menu-item-type-custom menu-item-object-custom current_page_item menu-item-home menu-item-344-en">
-                                <a href="{{route('register')}}" class="nav-top-link">Đăng ký</a>
+                                <a href="{{route('register')}}" class="nav-top-link">Đăng ký thành viên</a>
                             </li>
                             @else
                             <li id="menu-item-344-vi" class="lang-item lang-item-3 lang-item-vi lang-item-first menu-item menu-item-type-custom menu-item-object-custom menu-item-344-vi">
@@ -90,11 +90,6 @@
                             <ul id="mega-menu-primary" class="mega-menu max-mega-menu mega-menu-horizontal mega-no-js" data-event="hover_intent" data-effect="fade_up" data-effect-speed="200" data-effect-mobile="disabled" data-effect-speed-mobile="0" data-mobile-force-width="false" data-second-click="go" data-document-click="collapse" data-vertical-behaviour="standard" data-breakpoint="768" data-unbind="true" data-mobile-state="collapse_all" data-hover-intent-timeout="300" data-hover-intent-interval="100">
 
                                 @foreach($categories as $category)
-                                    @if($loop->last)
-                                            <li class="mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-237">
-                                                <a class="mega-menu-link" href="{{route('book')}}">Đặt lịch</a>
-                                            </li>
-                                    @endif
                                     <li class="mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-has-children mega-align-bottom-left mega-menu-flyout mega-menu-item-44">
                                         <a class="mega-menu-link" href="{{$category->linkPage()}}" aria-haspopup="true" aria-expanded="false" tabindex="0">
                                             {{$category->title}} @if(count($category->children)) <span class="mega-indicator"></span> @endif
@@ -108,7 +103,15 @@
                                                 @endforeach
                                             </ul>
                                         @endif
-                                </li>
+                                    </li>
+                                    @if($loop->last)
+                                        <li class="mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-237">
+                                            <a class="mega-menu-link" href="{{route('register')}}">Đăng ký thành viên</a>
+                                        </li>
+                                        <li class="mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-237">
+                                            <a class="mega-menu-link" href="{{route('book')}}">Đặt lịch</a>
+                                        </li>
+                                    @endif
 
                                 @endforeach
                             </ul>
