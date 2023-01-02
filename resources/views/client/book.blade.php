@@ -67,7 +67,8 @@
                 type="datetime-local"
                 name="time"
                 value="" />
-            {!! Form::number('numberUser', old('number'), ['class' => 'form-control', 'placeholder' => 'Số người']) !!}
+            {!! Form::number('numberUser', old('number'), ['class' => 'form-control', 'placeholder' => 'Số bé']) !!}
+            {!! Form::number('adult', old('number'), ['class' => 'form-control', 'placeholder' => 'Số người lớn']) !!}
 
            <div class="text-center">
                <button class="btn-book">Đặt lịch</button>

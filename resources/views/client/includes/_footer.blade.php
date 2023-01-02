@@ -40,9 +40,8 @@
                                                             <p>
                                                                 <strong>CÔNG TY TNHH THƯƠNG MẠI DỊCH VỤ BIYOKI</strong>
                                                             </p>
-                                                            <p>MST: 0317529628</p>
                                                             <p>Địa chỉ: Số 304 Minh Phụng, Phường 2, Quận 11, Thành phố Hồ Chí Minh, Việt Nam</p>
-                                                            <p>Điện thoại: <a href="tel:0964351299">0317529628</a> </p>
+                                                            <p>Điện thoại: <a href="tel:(028) 668 456 28">(028) 668 456 28</a> </p>
                                                             <p>Gmail: <a href="">biyoki.fk@gmail.com </a></p>
 
                                                         </div>
@@ -57,9 +56,8 @@
                                                 <p>
                                                     <strong>CÔNG TY TNHH THƯƠNG MẠI DỊCH VỤ BIYOKI</strong>
                                                 </p>
-                                                <p>MST: 0317529628</p>
                                                 <p>Địa chỉ: Số 304 Minh Phụng, Phường 2, Quận 11, Thành phố Hồ Chí Minh, Việt Nam</p>
-                                                <p>Điện thoại: <a href="tel:0964351299">0317529628</a> </p>
+                                                <p>Điện thoại: <a href="tel:(028) 668 456 28">(028) 668 456 28</a> </p>
                                                 <p>Gmail: <a href="">biyoki.fk@gmail.com </a></p>
                                             </div>
                                         </div>

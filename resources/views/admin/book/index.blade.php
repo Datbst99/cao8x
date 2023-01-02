@@ -15,7 +15,8 @@
                         <th class="text-nowrap">Tên khách hàng</th>
                         <th class="text-nowrap">Số điện thoại</th>
                         <th class="text-nowrap">Thời gian đặt lịch</th>
-                        <th class="text-nowrap">Số người</th>
+                        <th class="text-nowrap">Số bé</th>
+                        <th class="text-nowrap">Số người lớn</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -25,6 +26,7 @@
                             <td class="text-nowrap">{{$book->phone}}</td>
                             <td class="text-nowrap">{{\Carbon\Carbon::create($book->time)->format('d/m/Y H:i:s')}}</td>
                             <td class="text-nowrap">{{$book->num_of_user}}</td>
+                            <td class="text-nowrap">{{$book->adult}}</td>
                         </tr>
                     @endforeach
                     </tbody>

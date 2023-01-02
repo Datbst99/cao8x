@@ -7,6 +7,7 @@ use App\Core\ClientGoogleSheet;
 use App\Models\Book;
 use Artesaos\SEOTools\Facades\SEOTools;
 use App\Models\Category;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 
@@ -61,18 +62,20 @@ class HomeController extends Controller
             ]);
 
             $book = Book::create([
-               'name' => $request->get('name'),
-               'phone' => $request->get('phone'),
-               'time' => $request->get('time'),
-               'num_of_user' => $request->get('numberUser'),
+                'name' => $request->get('name'),
+                'phone' => $request->get('phone'),
+                'time' => $request->get('time'),
+                'num_of_user' => $request->get('numberUser'),
+                'adult' => $request->get('adult')
             ]);
 
             $data = [
                 [
                     $book->name,
                     $book->phone,
-                    $book->time->format('d/m/Y H:i:s'),
-                    $book->num_of_user
+                    Carbon::create($book->time)->format('d/m/Y H:i:s'),
+                    $book->num_of_user,
+                    $book->adult
                 ]
             ];
 
